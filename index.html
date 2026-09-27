@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AHMAD AZKA RIZQI (Natcat) — Stealth Cyber Deck</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#060307',
+            'obsidian-surface': '#0c070c',
+            'obsidian-elevated': '#120810',
+            'neon-red': '#ff003c',
+            'neon-bright': '#ff1744',
+            crimson: {
+              400: '#ff3366',
+              500: '#e01a4f',
+              600: '#b80d39',
+              700: '#8c0f2e',
+              800: '#5c061b',
+              900: '#34020c',
+            },
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          boxShadow: {
+            'neon-glow': '0 0 25px rgba(255, 0, 60, 0.45)',
+            'neon-tube': '0 0 15px #ff003c, inset 0 0 8px #ff1744',
+            'neon-sharp': '0 0 35px rgba(255, 23, 68, 0.65)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 5px; height: 5px; }
+    ::-webkit-scrollbar-track { background: #060307; }
+    ::-webkit-scrollbar-thumb { background: #5c061b; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ff003c; }
+
+    /* Background Meteor Canvas */
+    #meteor-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* PicoCTF Constellation Canvas */
+    #orbital-constellation-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: auto;
+      z-index: 1;
+    }
+
+    /* Asymmetric Stealth Glass Card */
+    .stealth-card {
+      background: rgba(14, 8, 12, 0.94);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+    }
+    .stealth-card:hover {
+      border-color: rgba(255, 0, 60, 0.5);
+      box-shadow: 0 16px 40px -10px rgba(255, 0, 60, 0.28);
+    }
+
+    /* Kinetic Shimmer on Formal Name */
+    .kinetic-name {
+      background: linear-gradient(105deg, #ffffff 0%, #ffffff 40%, #ff6b8b 50%, #ffffff 60%, #ffffff 100%);
+      background-size: 200% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: kineticShimmer 6s linear infinite;
+    }
+    @keyframes kineticShimmer {
+      0% { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+
+    /* Neon Glass Tube Progress Bars */
+    .neon-bar-core {
+      position: relative;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 0, 60, 0.3);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.9);
+    }
+    .neon-bar-fill {
+      position: relative;
+      background: linear-gradient(90deg, #9e1338, #ff003c, #ffffff);
+      box-shadow: 0 0 14px #ff003c, 0 0 4px #ffffff;
+      width: 0%;
+      transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Tactical Badge Deck Mat Pattern */
+    .deck-mat-texture {
+      background-color: #080408;
+      background-image: radial-gradient(rgba(255, 0, 60, 0.12) 1px, transparent 1px),
+                        radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+      background-size: 18px 18px, 9px 9px;
+      background-position: 0 0, 4.5px 4.5px;
+    }
+
+    /* Credly Compact Badge Socket */
+    .credly-badge-socket {
+      background: rgba(12, 6, 10, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.9);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .credly-badge-socket:hover {
+      border-color: rgba(255, 0, 60, 0.6);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 25px -6px rgba(255, 0, 60, 0.35);
+    }
+
+    /* Infinite Marquee Slider */
+    @keyframes marqueeScroll {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 28s linear infinite;
+    }
+    .marquee-wrapper:hover .marquee-track {
+      animation-play-state: paused;
+    }
+
+    /* Waterfall Tree Stem */
+    .tree-stem-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, #ff003c 0%, rgba(255, 0, 60, 0.35) 60%, rgba(255, 23, 68, 0.8) 100%);
+      box-shadow: 0 0 12px #ff003c;
+      transform-origin: top;
+    }
+    .tree-item-anim {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .tree-item-anim.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Typewriter Cursor */
+    .type-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 18px;
+      background-color: #ff003c;
+      margin-left: 4px;
+      animation: blink 0.85s infinite;
+      vertical-align: middle;
+      box-shadow: 0 0 10px #ff003c;
+    }
+    @keyframes blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+
+    /* Equalizer Wave Bars */
+    @keyframes eqWave {
+      0%, 100% { height: 4px; }
+      50% { height: 16px; }
+    }
+    .eq-bar-1 { animation: eqWave 0.85s ease-in-out infinite 0.1s; }
+    .eq-bar-2 { animation: eqWave 0.65s ease-in-out infinite 0.25s; }
+    .eq-bar-3 { animation: eqWave 1.05s ease-in-out infinite 0.15s; }
+    .eq-bar-4 { animation: eqWave 0.75s ease-in-out infinite 0.35s; }
+  </style>
+</head>
+<body class="bg-obsidian text-zinc-100 font-sans min-h-screen relative selection:bg-neon-red selection:text-white overflow-x-hidden">
+
+  <!-- Background Meteors Canvas -->
+  <canvas id="meteor-canvas"></canvas>
+
+  <!-- Ambient Subtle Crimson Radial Glows -->
+  <div class="fixed top-[-10%] left-[-5%] w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(255,0,60,0.08)_0%,transparent_70%)] rounded-full blur-[90px] pointer-events-none z-0"></div>
+  <div class="fixed top-[-10%] right-[-5%] w-[550px] h-[550px] bg-[radial-gradient(circle,rgba(255,0,60,0.12)_0%,transparent_70%)] rounded-full blur-[90px] pointer-events-none z-0"></div>
+
+  <!-- Top Floating Navigation Bar -->
+  <header class="fixed top-4 inset-x-0 z-50 flex justify-center px-4">
+    <nav class="stealth-card rounded-full px-5 py-2.5 flex items-center justify-between w-full max-w-4xl shadow-2xl border border-white/10">
+      <a href="#hero" class="flex items-center gap-2.5 group">
+        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-crimson-800 to-neon-bright flex items-center justify-center text-white font-extrabold text-xs tracking-wider shadow-lg shadow-neon-red/40">
+          AR
+        </div>
+        <div class="flex flex-col">
+          <span class="font-bold text-sm tracking-tight text-white group-hover:text-neon-bright transition-colors">AZKA — NATCAT</span>
+          <span class="text-[9px] text-zinc-400 font-mono tracking-widest uppercase">NODE ACTIVE</span>
+        </div>
+      </a>
+
+      <div class="hidden md:flex items-center gap-6 text-xs font-semibold text-zinc-300">
+        <a href="#orbital-hero" class="hover:text-neon-bright transition-colors flex items-center gap-1.5"><i class="bi bi-diagram-3-fill text-neon-red"></i> Constellation</a>
+        <a href="#cyber-area" class="hover:text-neon-bright transition-colors flex items-center gap-1.5"><i class="bi bi-shield-shaded text-neon-red"></i> Arsenal</a>
+        <a href="#deck-badges-area" class="hover:text-neon-bright transition-colors flex items-center gap-1.5"><i class="bi bi-patch-check-fill text-neon-red"></i> Badges</a>
+        <a href="#certificates-area" class="hover:text-neon-bright transition-colors flex items-center gap-1.5"><i class="bi bi-file-earmark-medical-fill text-neon-red"></i> Sertifikat</a>
+        <a href="#target-area" class="hover:text-neon-bright transition-colors flex items-center gap-1.5"><i class="bi bi-check2-square text-neon-red"></i> Targets</a>
+        <a href="#education-area" class="hover:text-neon-bright transition-colors flex items-center gap-1.5"><i class="bi bi-diagram-2 text-neon-red"></i> Education</a>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="#contact-area" class="px-4 py-1.5 rounded-full bg-crimson-700 hover:bg-neon-bright text-white font-semibold text-xs flex items-center gap-1.5 border border-neon-bright/50 shadow-sm transition-all hover:scale-105 active:scale-95">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>Connect</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section: Formal Identity & Institutional Badges -->
+  <section id="hero" class="pt-28 pb-4 px-4 max-w-6xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+      
+      <!-- Primary Card: Full Formal Name with Kinetic Typography -->
+      <div class="lg:col-span-8 stealth-card rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 border-l-4 border-l-neon-bright relative overflow-hidden">
+        
+        <!-- Profile Picture 1:1 Frame -->
+        <div class="w-32 h-32 md:w-36 md:h-36 rounded-2xl p-1 bg-zinc-950 border border-neon-red/50 shrink-0 relative group shadow-neon-glow">
+          <div class="w-full h-full rounded-xl overflow-hidden bg-zinc-900 flex items-center justify-center relative">
+            <img 
+              id="heroPhoto" 
+              src="assets/profile.jpeg" 
+              alt="Ahmad Azka Rizqi"
+              class="w-full h-full object-cover"
+              onerror="this.style.display='none'; document.getElementById('photoFallbackBox').style.display='flex';"
+            >
+            <div id="photoFallbackBox" class="hidden absolute inset-0 bg-gradient-to-br from-zinc-950 to-crimson-950 flex-col items-center justify-center text-center p-2">
+              <span class="font-extrabold text-2xl text-white">AR</span>
+              <span class="text-[10px] text-neon-bright font-mono mt-1">NATCAT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Name & Status Tag -->
+        <div class="flex-1 text-center md:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/60 border border-neon-red/40 mb-3">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-[11px] font-mono font-bold tracking-wider text-zinc-300">ACTIVE NODE // 2026</span>
+          </div>
+          
+          <h1 class="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight uppercase kinetic-name leading-tight">
+            AHMAD AZKA RIZQI
+          </h1>
+          
+          <div class="flex items-center justify-center md:justify-start gap-2.5 mt-2">
+            <span class="text-neon-bright font-bold text-lg tracking-wide">Natcat</span>
+            <span class="text-zinc-600 font-mono text-sm">/</span>
+            <span class="text-xs text-zinc-300 font-medium">Praktisi Keamanan Siber & Sistem</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Institutional Badges (MAN Temanggung & ITS Surabaya) -->
+      <div class="lg:col-span-4 grid grid-cols-2 gap-4">
+        
+        <!-- MAN Temanggung Badge -->
+        <div class="stealth-card rounded-2xl p-4 flex flex-col items-center justify-center text-center group hover:border-neon-bright/60 transition-all">
+          <div class="w-14 h-14 rounded-xl bg-zinc-950/80 border border-white/10 flex items-center justify-center mb-2.5 overflow-hidden p-2 shadow-inner">
+            <img 
+              id="heroLogoMan"
+              src="assets/logo-man.svg" 
+              alt="MAN Temanggung" 
+              class="w-full h-full object-contain"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            >
+            <span class="hidden font-extrabold text-sm text-neon-bright">MAN</span>
+          </div>
+          <span class="text-xs font-bold text-white tracking-tight">MAN Temanggung</span>
+          <span class="text-[10px] text-zinc-400 font-mono mt-0.5">2024 — 2027</span>
+        </div>
+
+        <!-- ITS Surabaya Badge -->
+        <div class="stealth-card rounded-2xl p-4 flex flex-col items-center justify-center text-center group hover:border-neon-bright/60 transition-all">
+          <div class="w-14 h-14 rounded-xl bg-zinc-950/80 border border-neon-red/30 flex items-center justify-center mb-2.5 overflow-hidden p-2 shadow-inner shadow-neon-glow/20">
+            <img 
+              id="heroLogoIts"
+              src="assets/logo-its.svg" 
+              alt="ITS Surabaya" 
+              class="w-full h-full object-contain"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            >
+            <span class="hidden font-extrabold text-sm text-neon-bright">ITS</span>
+          </div>
+          <span class="text-xs font-bold text-white tracking-tight">ITS Surabaya</span>
+          <span class="text-[10px] text-neon-bright font-mono mt-0.5 font-bold">Target Studi</span>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Grand-Scale PicoCTF Constellation -->
+  <section id="orbital-hero" class="w-full relative min-h-[640px] md:min-h-[720px] flex items-center justify-center overflow-hidden my-4">
+    <canvas id="orbital-constellation-canvas"></canvas>
+
+    <div class="relative z-10 text-center max-w-xl pointer-events-none select-none px-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/85 border border-neon-bright/40 text-[11px] font-mono text-neon-bright tracking-widest font-bold mb-3 shadow-neon-glow">
+        <span class="w-2 h-2 rounded-full bg-neon-bright animate-ping"></span>
+        <span>CYBERSPACE CORE</span>
+      </div>
+      
+      <h2 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight drop-shadow-[0_0_25px_rgba(255,0,60,0.65)]">
+        Natcat.
+      </h2>
+      
+      <p class="text-xs md:text-sm text-zinc-300 font-medium mt-2 leading-relaxed max-w-md mx-auto">
+        Cybersecurity & Systems Practitioner. Focusing on binary exploitation, digital forensics, and system architecture defense.
+      </p>
+
+      <div class="mt-4 text-[10px] font-mono text-neon-bright/80 tracking-wider">
+        [ HOVER OVER DOMAIN NODES FOR METRICS ]
+      </div>
+    </div>
+
+    <!-- Node Hover Tooltip -->
+    <div id="constellationTooltip" class="absolute z-20 pointer-events-none opacity-0 transition-opacity duration-200 px-3.5 py-2 rounded-xl bg-black/95 border border-neon-bright text-white text-xs font-mono shadow-neon-glow">
+      <span id="tooltipDomainTitle" class="font-bold text-neon-bright"></span>: <span id="tooltipDomainVal" class="text-white font-bold"></span>
+    </div>
+  </section>
+
+  <!-- Centered Terminal Broadcast & Music Deck -->
+  <section class="max-w-4xl mx-auto px-4 py-4 relative z-10">
+    <div class="stealth-card rounded-2xl p-5 md:p-6 flex flex-col md:flex-row items-center justify-between gap-5 border border-neon-red/40 shadow-neon-glow">
+      
+      <!-- Terminal Echo -->
+      <div class="flex items-center gap-3.5 flex-1 w-full text-center md:text-left justify-center md:justify-start">
+        <div class="w-11 h-11 rounded-xl bg-neon-red/20 border border-neon-bright/60 flex items-center justify-center text-neon-bright shrink-0 shadow-neon-tube">
+          <i class="bi bi-terminal-fill text-xl"></i>
+        </div>
+        <div class="overflow-hidden">
+          <div class="text-[11px] font-mono font-bold text-neon-bright uppercase tracking-widest flex items-center gap-2 justify-center md:justify-start">
+            <span>TERMINAL ECHO</span>
+          </div>
+          <div class="text-base md:text-lg text-white font-medium truncate py-0.5 font-sans">
+            <span id="terminalTypewriter"></span>
+            <span class="type-cursor"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Music Player Widget: Justin Bieber - DAISIES -->
+      <div class="flex items-center gap-3 shrink-0 bg-black/70 px-4 py-2.5 rounded-xl border border-white/10 w-full md:w-auto justify-between md:justify-start">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-lg bg-zinc-900 border border-neon-red/50 flex items-center justify-center text-amber-300 shadow-inner">
+            <i class="bi bi-flower1 text-2xl animate-spin" style="animation-duration: 9s;"></i>
+          </div>
+          <div class="text-left">
+            <div class="text-xs font-bold text-white tracking-tight">DAISIES</div>
+            <div class="text-[10px] text-zinc-400 font-medium">Justin Bieber</div>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2.5 ml-4">
+          <div id="audioWaveBars" class="flex items-end gap-1 h-4">
+            <span class="w-1 bg-neon-red rounded-full eq-bar-1"></span>
+            <span class="w-1 bg-rose-400 rounded-full eq-bar-2"></span>
+            <span class="w-1 bg-neon-bright rounded-full eq-bar-3"></span>
+            <span class="w-1 bg-red-600 rounded-full eq-bar-4"></span>
+          </div>
+          <button id="audioWaveToggleBtn" class="text-xs text-zinc-300 hover:text-white p-1" title="Toggle audio wave">
+            <i id="audioWaveIcon" class="bi bi-pause-fill text-lg text-neon-bright"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Cybersecurity & Technical Arsenal -->
+  <section id="cyber-area" class="max-w-6xl mx-auto px-4 py-12 relative z-10">
+    <div class="flex items-center gap-2.5 mb-7">
+      <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
+      <h2 class="text-2xl font-bold text-white uppercase tracking-wider">Cybersecurity & Technical Arsenal</h2>
+    </div>
+
+    <!-- Asymmetrical Layout: Left Column 65% Telemetry, Right Column 35% Stats -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+
+      <!-- Left Column: 8 Domain Neon Tube Bars (Generated dynamically from data.js) -->
+      <div class="lg:col-span-7 stealth-card rounded-2xl p-6 border-t-2 border-t-neon-red" id="skillsContainerCard">
+        <div class="flex items-center justify-between pb-3 mb-5 border-b border-white/[0.08]">
+          <span class="text-xs font-bold text-white uppercase tracking-wider font-mono">DOMAIN PROFICIENCY TELEMETRY</span>
+          <span class="text-[11px] font-mono font-bold text-neon-bright bg-neon-red/10 px-2 py-0.5 rounded border border-neon-red/30">8 DOMAINS ACTIVE</span>
+        </div>
+
+        <div class="space-y-4" id="skillBarsList">
+          <!-- Dynamically generated from portfolioData.skills -->
+        </div>
+      </div>
+
+      <!-- Right Column: Metrics & Cyber Tools Chips (5 Cols) -->
+      <div class="lg:col-span-5 flex flex-col gap-4">
+        
+        <!-- Total Flags Card with Count-Up Effect & Exploration Duration -->
+        <div class="stealth-card rounded-2xl p-5 border-l-4 border-l-neon-bright flex items-center justify-between shadow-neon-glow/40">
+          <div>
+            <span class="text-[11px] font-bold text-zinc-400 font-mono uppercase tracking-wider">TOTAL FLAGS CAPTURED 🚩</span>
+            <div id="totalFlagsCounter" class="text-4xl font-extrabold font-mono text-white mt-1 text-neon-bright drop-shadow-[0_0_16px_rgba(255,0,60,0.7)]">
+              0
+            </div>
+            <span class="text-[10px] text-zinc-400">Verified CTF Submissions</span>
+          </div>
+          <div class="text-right">
+            <span class="text-[11px] font-bold text-zinc-400 font-mono uppercase tracking-wider">DURASI EKSPLORASI</span>
+            <div id="explorationDurationValue" class="text-2xl font-bold font-mono text-white mt-1">
+              8+ Bulan
+            </div>
+            <span class="text-[10px] text-zinc-400">Hands-on Learning</span>
+          </div>
+        </div>
+
+        <!-- Cyber Tools Chip Set (Generated from data.js) -->
+        <div class="stealth-card rounded-2xl p-5 flex-1">
+          <span class="text-xs font-bold text-white uppercase tracking-wider block mb-3 font-mono">SENJATA UTAMA (CYBER ARSENAL):</span>
+          <div class="flex flex-wrap gap-2" id="cyberToolsContainer">
+            <!-- Dynamically generated from portfolioData.tools -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MEJA DECK BADGES (FORMAT KOMPAK KHUSUS CREDLY PIN) -->
+  <section id="deck-badges-area" class="max-w-6xl mx-auto px-4 py-8 relative z-10">
+    <div class="flex items-center justify-between mb-6">
+      <div class="flex items-center gap-2.5">
+        <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
+        <h2 class="text-2xl font-bold text-white uppercase tracking-wider">Tactical Deck Badges</h2>
+      </div>
+      <div class="flex items-center gap-2 text-[11px] font-mono text-zinc-400 bg-black/60 px-3 py-1 rounded-full border border-white/10">
+        <span class="w-1.5 h-1.5 rounded-full bg-neon-bright animate-ping"></span>
+        <span>CREDLY ARMORY PIN // EMBLEMATIC</span>
+      </div>
+    </div>
+
+    <!-- Physical Deck Mat Chassis Frame -->
+    <div class="deck-mat-texture rounded-3xl p-5 md:p-7 border-2 border-zinc-800 shadow-[0_20px_50px_rgba(0,0,0,0.85)] relative overflow-hidden">
+      
+      <!-- Metallic Deck Screws on 4 Corners -->
+      <div class="absolute top-3 left-3 w-2.5 h-2.5 rounded-full bg-zinc-700 border border-zinc-900 shadow-inner flex items-center justify-center">
+        <div class="w-1.5 h-0.5 bg-zinc-900"></div>
+      </div>
+      <div class="absolute top-3 right-3 w-2.5 h-2.5 rounded-full bg-zinc-700 border border-zinc-900 shadow-inner flex items-center justify-center">
+        <div class="w-1.5 h-0.5 bg-zinc-900"></div>
+      </div>
+      <div class="absolute bottom-3 left-3 w-2.5 h-2.5 rounded-full bg-zinc-700 border border-zinc-900 shadow-inner flex items-center justify-center">
+        <div class="w-1.5 h-0.5 bg-zinc-900"></div>
+      </div>
+      <div class="absolute bottom-3 right-3 w-2.5 h-2.5 rounded-full bg-zinc-700 border border-zinc-900 shadow-inner flex items-center justify-center">
+        <div class="w-1.5 h-0.5 bg-zinc-900"></div>
+      </div>
+
+      <!-- Deck Header Plate -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 mb-5 border-b border-white/10">
+        <div class="flex items-center gap-2">
+          <i class="bi bi-patch-check-fill text-neon-bright text-base"></i>
+          <span class="text-xs font-mono font-bold text-white tracking-widest uppercase">CREDLY BADGE SOCKETS // COMPACT TRAY</span>
+        </div>
+        <div class="text-[10px] font-mono text-zinc-400">
+          STATUS: <span class="text-neon-bright font-bold" id="badgeUnlockedStatusCount">0 MOUNTED</span>
+        </div>
+      </div>
+
+      <!-- Sockets Grid Container (Kompak Pas untuk Credly Pin No-BG) -->
+      <div id="deckBadgesContainer">
+        <!-- Rendered dynamically via renderDeckBadges() -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SERTIFIKAT (DIPERBESAR & LEGA // CERTIFICATE SHOWCASE DECK) -->
+  <section id="certificates-area" class="max-w-6xl mx-auto px-4 py-8 relative z-10">
+    <div class="stealth-card rounded-3xl p-6 md:p-8 border border-neon-red/30 shadow-neon-glow/15">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-6 border-b border-white/10">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="w-2 h-2 rounded-full bg-neon-bright shadow-neon-glow"></span>
+            <span class="text-xs font-bold text-neon-bright uppercase tracking-wider font-mono">DOKUMEN VALIDASI KREDENSIAL</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-extrabold text-white tracking-tight">Sertifikat & Lisensi Profesional</h3>
+        </div>
+
+        <!-- Tab Buttons Switcher -->
+        <div class="flex p-1.5 bg-black/80 rounded-2xl border border-white/10 w-fit">
+          <button onclick="switchCertTab('courses')" id="tab-courses" class="px-4 py-2 rounded-xl text-xs font-semibold bg-crimson-700 text-white shadow-neon-glow transition-all">
+            Kursus & Studi
+          </button>
+          <button onclick="switchCertTab('competitions')" id="tab-competitions" class="px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors">
+            Kompetisi
+          </button>
+          <button onclick="switchCertTab('bugHunter')" id="tab-bugHunter" class="px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors">
+            Bug Hunter
+          </button>
+        </div>
+      </div>
+
+      <!-- Certificate Grid Container (Besar, Lega 2 Kolom) -->
+      <div id="certTabContent" class="py-2">
+        <!-- Rendered dynamically from portfolioData.certificates -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Target & Roadmap Milestones (Tactical To-Do List HUD) -->
+  <section id="target-area" class="max-w-6xl mx-auto px-4 py-12 relative z-10">
+    <div class="flex items-center gap-2.5 mb-7">
+      <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
+      <h2 class="text-2xl font-bold text-white uppercase tracking-wider">Target & Roadmap Milestones</h2>
+    </div>
+
+    <div class="stealth-card rounded-3xl p-6 md:p-8 border border-white/10">
+      <div class="flex items-center justify-between pb-3 mb-4 border-b border-white/[0.08] text-xs font-mono text-zinc-400">
+        <span>STATUS PERIKSA // 10 MILESTONES</span>
+        <span class="text-neon-bright">SELEKSI & JALUR PRESTASI</span>
+      </div>
+
+      <div class="space-y-2.5" id="tacticalTodoListContainer">
+        <!-- Injected dynamically from portfolioData.targets -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievement Wall -->
+  <section id="achievements-area" class="max-w-6xl mx-auto px-4 py-10 relative z-10">
+    <div class="flex items-center gap-2.5 mb-7">
+      <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
+      <h2 class="text-2xl font-bold text-white uppercase tracking-wider">Achievement Wall</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch" id="asymmetricAchievementsGrid">
+      <!-- Injected dynamically from portfolioData.achievements -->
+    </div>
+  </section>
+
+  <!-- Riwayat Pendidikan (Tree-Fall Waterfall) -->
+  <section id="education-area" class="max-w-4xl mx-auto px-4 py-12 relative z-10">
+    <div class="flex items-center gap-2.5 mb-8">
+      <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
+      <h2 class="text-2xl font-bold text-white uppercase tracking-wider">Riwayat Pendidikan</h2>
+    </div>
+
+    <div class="relative pl-6 md:pl-10 space-y-7" id="educationWaterfallTree">
+      <div class="tree-stem-line left-2 md:left-4" id="educationTreeStem"></div>
+      <!-- Nodes injected dynamically from portfolioData.education -->
+    </div>
+  </section>
+
+  <!-- Public Guestbook Section -->
+  <section id="guestbook-area" class="max-w-4xl mx-auto px-4 py-10 relative z-10">
+    <div class="stealth-card rounded-3xl p-6 md:p-8 border border-neon-red/30">
+      <div class="text-center mb-6">
+        <span class="px-3 py-1 rounded-full bg-neon-red/10 border border-neon-bright/40 text-neon-bright text-[11px] font-mono font-bold tracking-widest">
+          BUKU TAMU PUBLIK
+        </span>
+        <h3 class="text-2xl font-bold text-white mt-2">Absen Pengunjung</h3>
+      </div>
+
+      <form id="guestbookForm" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto mb-6">
+        <input 
+          type="text" 
+          id="guestNameInput" 
+          maxlength="30"
+          required
+          placeholder="Tuliskan nama atau callsign kamu..." 
+          class="flex-1 px-4 py-2.5 rounded-xl bg-black/70 border border-white/10 text-white text-xs focus:outline-none focus:border-neon-bright transition-colors"
+        >
+        <button 
+          type="submit" 
+          class="px-5 py-2.5 rounded-xl bg-crimson-700 hover:bg-neon-red text-white text-xs font-semibold shadow-neon-glow active:scale-95 transition-all shrink-0">
+          Absen Sekarang
+        </button>
+      </form>
+
+      <div class="flex justify-between text-[11px] font-mono text-zinc-400 pb-2 border-b border-white/[0.08] mb-3">
+        <span>LOG JEJAK PENGUNJUNG</span>
+        <span id="guestTotalCount">Total: 0</span>
+      </div>
+
+      <div id="guestFeed" class="space-y-2 max-h-48 overflow-y-auto pr-1"></div>
+    </div>
+  </section>
+
+  <!-- Footer & Infinite Dynamic Marquee for Social Media -->
+  <footer id="contact-area" class="border-t border-white/[0.08] bg-black/90 pt-12 pb-10 px-4 relative z-10 overflow-hidden">
+    <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+      <div class="text-lg font-bold text-white mb-1 uppercase tracking-wider">AHMAD AZKA RIZQI — NATCAT</div>
+      <p class="text-xs text-zinc-400 mb-6">Terbuka untuk kolaborasi riset CTF, security engineering, dan diskusi sistem.</p>
+
+      <div class="marquee-wrapper w-full overflow-hidden py-3 mb-8">
+        <div class="marquee-track flex gap-3.5" id="socialMarqueeTrack">
+          <!-- Duplicated items injected dynamically from portfolioData.socials -->
+        </div>
+      </div>
+
+      <div class="text-xs text-zinc-500 font-mono">
+        &copy; 2026 Ahmad Azka Rizqi (Natcat). Arsitektur Sistem Berpresisi Tinggi.
+      </div>
+    </div>
+  </footer>
+
+  <!-- TACTICAL ADMIN AUTH MODAL (DITEMPATKAN SEBELUM SCRIPT AGAR ELEMENT SELALU SIAP) -->
+  <div id="adminDeleteModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[9999] hidden items-center justify-center p-4">
+    <div class="stealth-card max-w-sm w-full rounded-2xl p-6 border border-neon-red/60 shadow-neon-sharp relative">
+      <div class="text-center mb-4">
+        <div class="w-12 h-12 rounded-xl bg-neon-red/10 border border-neon-bright/40 flex items-center justify-center text-neon-bright text-xl mx-auto mb-2 shadow-neon-tube">
+          <i class="bi bi-shield-lock-fill"></i>
+        </div>
+        <span class="text-[10px] font-mono font-bold text-neon-bright uppercase tracking-widest block">ADMIN CLEARANCE REQUIRED</span>
+        <h4 class="text-base font-bold text-white mt-1">Hapus Jejak Absen</h4>
+        <p class="text-xs text-zinc-400 mt-1" id="modalTargetGuestName">Target: Tamu</p>
+      </div>
+
+      <div class="space-y-3">
+        <input 
+          type="password" 
+          id="adminPasskeyModalInput" 
+          placeholder="Ketik passkey admin..." 
+          class="w-full px-4 py-2.5 rounded-xl bg-black border border-white/20 text-white font-mono text-center text-xs tracking-wider focus:outline-none focus:border-neon-bright focus:shadow-neon-glow transition-all"
+        >
+        <div id="modalPasskeyError" class="text-[11px] font-mono text-red-500 text-center hidden">Passkey salah! Akses ditolak.</div>
+      </div>
+
+      <div class="flex items-center gap-2.5 mt-5">
+        <button 
+          type="button" 
+          id="modalCancelBtn" 
+          class="flex-1 py-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs font-semibold border border-white/10 transition-colors">
+          Batal
+        </button>
+        <button 
+          type="button" 
+          id="modalConfirmDeleteBtn" 
+          class="flex-1 py-2 rounded-xl bg-crimson-700 hover:bg-neon-bright text-white text-xs font-semibold shadow-neon-glow transition-all active:scale-95">
+          Hapus Data
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Firebase Core & Firestore SDK (Compat CDN) -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
+  <!-- 1. Panggil Data Eksternal dari data.js -->
+  <script src="data.js"></script>
+
+  <!-- 2. Core Execution Engine -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof portfolioData !== 'undefined') {
+        // Sinkronisasi Foto & Logo Hero dari data.js
+        const heroPhoto = document.getElementById('heroPhoto');
+        if (heroPhoto && portfolioData.profilePhoto) {
+          heroPhoto.src = portfolioData.profilePhoto;
+        }
+
+        const heroMan = document.getElementById('heroLogoMan');
+        if (heroMan && portfolioData.heroBadges?.manLogo) {
+          heroMan.src = portfolioData.heroBadges.manLogo;
+        }
+
+        const heroIts = document.getElementById('heroLogoIts');
+        if (heroIts && portfolioData.heroBadges?.itsLogo) {
+          heroIts.src = portfolioData.heroBadges.itsLogo;
+        }
+
+        // Flag & Durasi
+        const flagElem = document.getElementById('totalFlagsCounter');
+        if (flagElem && typeof portfolioData.flags !== 'undefined') {
+          flagElem.textContent = portfolioData.flags;
+        }
+
+        const durElem = document.getElementById('explorationDurationValue');
+        if (durElem && portfolioData.explorationDuration) {
+          durElem.textContent = portfolioData.explorationDuration;
+        }
+
+        // Render Komponen
+        renderTools();
+        renderSkillBars();
+        renderDeckBadges();
+        renderAchievements();
+        switchCertTab('courses');
+        initGuestbookEngine();
+      }
+    });
+
+    /* Render Cyber Tools Dinamis */
+    function renderTools() {
+      const container = document.getElementById('cyberToolsContainer');
+      if (!container || !portfolioData.tools) return;
+      container.innerHTML = '';
+
+      portfolioData.tools.forEach(tool => {
+        const span = document.createElement('span');
+        span.className = "px-3 py-1.5 rounded-lg bg-black/70 border border-white/10 text-xs font-medium text-zinc-200 hover:border-neon-bright hover:shadow-neon-glow transition-all flex items-center gap-1.5 cursor-default";
+        span.innerHTML = `<i class="bi ${tool.icon} ${tool.color}"></i> ${tool.name}`;
+        container.appendChild(span);
+      });
+    }
+
+    /* Render 8 Domain Cyber Bars Dinamis */
+    function renderSkillBars() {
+      const list = document.getElementById('skillBarsList');
+      if (!list || !portfolioData.skills) return;
+      list.innerHTML = '';
+
+      portfolioData.skills.forEach(skill => {
+        const row = document.createElement('div');
+        row.className = "skill-item-row";
+        row.setAttribute('data-target', skill.val !== null ? skill.val : 0);
+
+        if (skill.val !== null) {
+          row.innerHTML = `
+            <div class="flex justify-between text-xs mb-1.5 font-medium">
+              <span class="text-zinc-200">${skill.name}</span>
+              <span class="font-mono font-bold text-white tracking-wider skill-num-label">0%</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full neon-bar-core overflow-hidden">
+              <div class="h-full neon-bar-fill rounded-full" data-width="${skill.val}%"></div>
+            </div>
+          `;
+        } else {
+          row.innerHTML = `
+            <div class="flex justify-between text-xs mb-1.5 font-medium">
+              <span class="text-zinc-400">${skill.name}</span>
+              <span class="font-mono font-bold text-zinc-500">[RESEARCH]</span>
+            </div>
+            <div class="w-full h-2.5 rounded-full bg-white/[0.05] border border-white/5 overflow-hidden">
+              <div class="h-full bg-zinc-700/60 rounded-full w-[6%]"></div>
+            </div>
+          `;
+        }
+        list.appendChild(row);
+      });
+    }
+
+    /* Render Meja Deck Badges (Ukuran Kompak Credly) */
+    function renderDeckBadges() {
+      const container = document.getElementById('deckBadgesContainer');
+      const countLabel = document.getElementById('badgeUnlockedStatusCount');
+      if (!container) return;
+      container.innerHTML = '';
+
+      const badges = (typeof portfolioData !== 'undefined' && portfolioData.badges) ? portfolioData.badges : [];
+
+      if (badges.length === 0) {
+        if (countLabel) countLabel.textContent = "0 MOUNTED // STANDBY";
+        container.className = "w-full";
+        container.innerHTML = `
+          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/50 p-6 md:p-8 text-center w-full">
+            <div class="w-12 h-12 rounded-xl bg-neon-red/10 border border-neon-bright/30 flex items-center justify-center text-neon-bright text-xl mx-auto mb-3 shadow-neon-tube">
+              <i class="bi bi-patch-check"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-neon-bright uppercase tracking-widest block mb-1">STATUS: COMING SOON</span>
+            <p class="text-xs text-zinc-400 max-w-md mx-auto">Credly pin & emblem transparan sedang dalam tahap pengumpulan. Meja armory dock siap menampilkan lencana.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.className = "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3";
+      if (countLabel) countLabel.textContent = `${badges.length} MOUNTED`;
+
+      badges.forEach(b => {
+        const card = document.createElement(b.url ? 'a' : 'div');
+        if (b.url) {
+          card.href = b.url;
+          card.target = "_blank";
+          card.rel = "noopener noreferrer";
+        }
+        card.className = "credly-badge-socket rounded-xl p-3 flex flex-col items-center text-center relative group cursor-pointer";
+
+        const imgHtml = b.image 
+          ? `<img src="${b.image}" alt="${b.name}" class="w-10 h-10 object-contain drop-shadow-[0_0_10px_rgba(255,0,60,0.5)] group-hover:scale-110 group-hover:drop-shadow-[0_0_16px_rgba(255,23,68,0.9)] transition-all">`
+          : `<i class="bi bi-patch-check-fill text-2xl text-neon-bright"></i>`;
+
+        card.innerHTML = `
+          <div class="w-12 h-12 rounded-xl bg-black/90 border border-white/10 group-hover:border-neon-bright flex items-center justify-center mb-2 shadow-inner">
+            ${imgHtml}
+          </div>
+          <span class="text-[11px] font-bold text-white tracking-tight truncate w-full mb-0.5">${b.name}</span>
+          <span class="text-[9px] font-mono text-neon-bright font-bold uppercase truncate w-full">${b.issuer || 'CREDLY'}</span>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* Render Sertifikat (Ukuran Besar & Lega - 2 Kolom) */
+    function switchCertTab(tab) {
+      ['courses', 'competitions', 'bugHunter'].forEach(t => {
+        const btn = document.getElementById(`tab-${t}`);
+        if (btn) {
+          if (t === tab) {
+            btn.className = "px-4 py-2 rounded-xl text-xs font-semibold bg-crimson-700 text-white shadow-neon-glow transition-all";
+          } else {
+            btn.className = "px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors";
+          }
+        }
+      });
+
+      const container = document.getElementById('certTabContent');
+      if (!container || !portfolioData.certificates) return;
+
+      const certs = portfolioData.certificates[tab] || [];
+
+      if (certs.length === 0) {
+        container.innerHTML = `
+          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 p-8 md:p-12 text-center w-full my-2">
+            <div class="w-14 h-14 rounded-2xl bg-neon-red/10 border border-neon-bright/30 flex items-center justify-center text-neon-bright text-2xl mx-auto mb-3 shadow-neon-tube">
+              <i class="bi bi-file-earmark-medical"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-neon-bright uppercase tracking-widest block mb-1.5">STATUS: COMING SOON</span>
+            <p class="text-xs text-zinc-400 max-w-lg mx-auto">Dokumen verifikasi resmi, sertifikat kelulusan kursus, dan piagam kompetisi sedang dalam tahap kurasi dan pengarsipan.</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = `
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-2">
+            ${certs.map(c => `
+              <div class="p-6 rounded-2xl bg-black/60 border border-white/10 hover:border-neon-bright flex flex-col justify-between transition-all group shadow-lg">
+                <div>
+                  <div class="flex items-center justify-between gap-3 mb-3">
+                    <span class="px-2.5 py-1 rounded-md bg-neon-red/15 border border-neon-bright/40 text-[11px] font-mono text-neon-bright font-bold uppercase tracking-wider">
+                      ${c.issuer}
+                    </span>
+                    <span class="font-mono text-xs font-bold text-zinc-400">${c.year}</span>
+                  </div>
+
+                  <h4 class="text-base md:text-lg font-bold text-white group-hover:text-neon-bright transition-colors leading-snug mb-2">
+                    ${c.title}
+                  </h4>
+
+                  ${c.certId ? `
+                    <div class="text-[11px] font-mono text-zinc-400 flex items-center gap-1.5 mb-4">
+                      <i class="bi bi-shield-check text-neon-bright"></i>
+                      <span>${c.certId}</span>
+                    </div>
+                  ` : '<div class="mb-4"></div>'}
+                </div>
+
+                <div class="pt-4 border-t border-white/10 flex items-center justify-between">
+                  <span class="text-[11px] font-mono text-zinc-500">TERVERIFIKASI RESMI</span>
+                  ${c.url ? `
+                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-neon-bright hover:text-white border border-white/10 text-xs font-semibold text-zinc-200 transition-all flex items-center gap-1.5 shadow-sm">
+                      <span>Lihat Kredensial</span>
+                      <i class="bi bi-box-arrow-up-right text-[11px]"></i>
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+      }
+    }
+
+    /* Render Achievement Wall Dinamis */
+    function renderAchievements() {
+      const grid = document.getElementById('asymmetricAchievementsGrid');
+      if (!grid || !portfolioData.achievements) return;
+      grid.innerHTML = '';
+
+      portfolioData.achievements.forEach(ach => {
+        const card = document.createElement('div');
+
+        if (ach.featured) {
+          card.className = "lg:col-span-7 stealth-card rounded-3xl p-6 md:p-7 border-l-4 border-l-neon-bright relative overflow-hidden flex flex-col justify-between shadow-neon-glow/20";
+          card.innerHTML = `
+            <div class="absolute -right-8 -top-8 w-32 h-32 bg-neon-red/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-neon-bright/20 border border-neon-bright/40 text-neon-bright text-[11px] font-mono font-bold">
+                  ${ach.badge}
+                </span>
+                <span class="text-xs font-mono text-zinc-400 font-bold">${ach.category}</span>
+              </div>
+              <h3 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">${ach.title}</h3>
+              <p class="text-xs text-zinc-300 leading-relaxed max-w-lg mb-4">${ach.desc}</p>
+            </div>
+            <div class="flex flex-wrap gap-2 pt-3 border-t border-white/10 text-[11px] font-mono">
+              ${(ach.tags || []).map(t => `<span class="px-2.5 py-1 rounded bg-black/60 border border-neon-red/30 text-zinc-200">${t}</span>`).join('')}
+            </div>
+          `;
+        } else {
+          card.className = "lg:col-span-5 stealth-card rounded-3xl p-6 md:p-7 border-t-2 border-t-neon-bright flex flex-col justify-between hover:shadow-neon-glow transition-all";
+          card.innerHTML = `
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white text-[11px] font-mono font-bold">
+                  ${ach.badge}
+                </span>
+                <span class="text-xs font-mono text-neon-bright font-bold">${ach.category}</span>
+              </div>
+              <h3 class="text-lg md:text-xl font-bold text-white tracking-tight mb-2">${ach.title}</h3>
+              <p class="text-xs text-zinc-300 leading-relaxed mb-4">${ach.desc}</p>
+            </div>
+            <div class="pt-3 border-t border-white/10 text-[11px] font-mono text-zinc-400">
+              ${ach.tags ? ach.tags.join(' // ') : ''}
+            </div>
+          `;
+        }
+        grid.appendChild(card);
+      });
+    }
+
+    /* Subtle Falling Meteors Engine */
+    (() => {
+      const canvas = document.getElementById('meteor-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const meteors = [];
+      const maxMeteors = 4;
+
+      function spawnMeteor() {
+        if (meteors.length >= maxMeteors) return;
+        const startX = Math.random() * (width + 200) - 100;
+        const startY = Math.random() * (height * 0.4) - 100;
+        const length = 50 + Math.random() * 70;
+        const speed = 4 + Math.random() * 4;
+        const angle = Math.PI / 4 + (Math.random() * 0.15 - 0.075);
+
+        meteors.push({
+          x: startX,
+          y: startY,
+          length: length,
+          speed: speed,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          opacity: 0.15 + Math.random() * 0.25,
+          life: 0,
+          maxLife: 60 + Math.random() * 40
+        });
+      }
+
+      function updateAndRenderMeteors() {
+        ctx.clearRect(0, 0, width, height);
+
+        if (Math.random() < 0.02) {
+          spawnMeteor();
+        }
+
+        for (let i = meteors.length - 1; i >= 0; i--) {
+          const m = meteors[i];
+          m.x += m.vx;
+          m.y += m.vy;
+          m.life++;
+
+          let currentAlpha = m.opacity;
+          if (m.life < 15) {
+            currentAlpha = (m.life / 15) * m.opacity;
+          } else if (m.life > m.maxLife - 20) {
+            currentAlpha = ((m.maxLife - m.life) / 20) * m.opacity;
+          }
+
+          if (m.life >= m.maxLife || m.x > width + 100 || m.y > height + 100) {
+            meteors.splice(i, 1);
+            continue;
+          }
+
+          const tailX = m.x - (m.vx / m.speed) * m.length;
+          const tailY = m.y - (m.vy / m.speed) * m.length;
+
+          const grad = ctx.createLinearGradient(tailX, tailY, m.x, m.y);
+          grad.addColorStop(0, 'rgba(255, 0, 60, 0)');
+          grad.addColorStop(0.7, `rgba(255, 0, 60, ${currentAlpha * 0.6})`);
+          grad.addColorStop(1, `rgba(255, 255, 255, ${currentAlpha})`);
+
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = 1.2;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(tailX, tailY);
+          ctx.lineTo(m.x, m.y);
+          ctx.stroke();
+        }
+
+        requestAnimationFrame(updateAndRenderMeteors);
+      }
+      updateAndRenderMeteors();
+    })();
+
+    /* Grand-Scale PicoCTF Constellation */
+    (() => {
+      const canvas = document.getElementById('orbital-constellation-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      const domains = (typeof portfolioData !== 'undefined' && portfolioData.skills) ? portfolioData.skills.map(s => ({
+        name: s.name.toUpperCase(),
+        val: s.val !== null ? `${s.val}%` : "[RESEARCH]",
+        angle: s.angle,
+        rFactor: s.rFactor || 0.45
+      })) : [
+        { name: "GENERAL SKILLS", val: "40%", angle: -Math.PI / 2, rFactor: 0.44 },
+        { name: "CRYPTOGRAPHY", val: "20%", angle: -Math.PI / 4, rFactor: 0.46 },
+        { name: "WEB EXPLOITATION", val: "[RESEARCH]", angle: 0, rFactor: 0.45 },
+        { name: "FORENSICS", val: "60%", angle: Math.PI / 4, rFactor: 0.47 },
+        { name: "BINARY EXPLOITATION", val: "[RESEARCH]", angle: Math.PI / 2, rFactor: 0.44 },
+        { name: "REVERSE ENGINEERING", val: "70%", angle: (3 * Math.PI) / 4, rFactor: 0.46 },
+        { name: "NETWORK KNOWLEDGE", val: "75%", angle: Math.PI, rFactor: 0.45 },
+        { name: "OSINT", val: "15%", angle: (-3 * Math.PI) / 4, rFactor: 0.47 }
+      ];
+
+      const connections = [
+        [0, 4], [1, 5], [2, 6], [7, 3],
+        [0, 3], [0, 5], [7, 1], [6, 4],
+        [4, 2], [7, 6], [1, 2]
+      ];
+
+      const laserBeams = connections.map(([from, to], idx) => ({
+        from,
+        to,
+        progress: (idx * 0.12) % 1,
+        speed: 0.004 + (idx % 3) * 0.002,
+        length: 0.22
+      }));
+
+      let width = canvas.width = canvas.parentElement.clientWidth;
+      let height = canvas.height = canvas.parentElement.clientHeight;
+
+      let mouse = { x: -1000, y: -1000 };
+      const tooltip = document.getElementById('constellationTooltip');
+      const tooltipTitle = document.getElementById('tooltipDomainTitle');
+      const tooltipVal = document.getElementById('tooltipDomainVal');
+
+      canvas.addEventListener('mousemove', (e) => {
+        const rect = canvas.getBoundingClientRect();
+        mouse.x = e.clientX - rect.left;
+        mouse.y = e.clientY - rect.top;
+      });
+
+      canvas.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+        if (tooltip) tooltip.style.opacity = '0';
+      });
+
+      function resize() {
+        if (!canvas.parentElement) return;
+        width = canvas.width = canvas.parentElement.clientWidth;
+        height = canvas.height = canvas.parentElement.clientHeight;
+      }
+      window.addEventListener('resize', resize);
+
+      let time = 0;
+
+      function renderConstellation() {
+        time += 0.012;
+        ctx.clearRect(0, 0, width, height);
+
+        const centerX = width / 2;
+        const centerY = height / 2;
+        const baseRadius = Math.min(width, height) * 1.1;
+
+        const nodes = domains.map((d, i) => {
+          const wobble = Math.sin(time * 1.1 + i * 1.4) * 6;
+          const r = (baseRadius * d.rFactor) + wobble;
+          const x = centerX + Math.cos(d.angle) * r;
+          const y = centerY + Math.sin(d.angle) * r * 0.72;
+          return { ...d, x, y };
+        });
+
+        connections.forEach(([i, j]) => {
+          const p1 = nodes[i];
+          const p2 = nodes[j];
+
+          ctx.strokeStyle = 'rgba(255, 0, 60, 0.22)';
+          ctx.lineWidth = 1.3;
+          ctx.beginPath();
+          ctx.moveTo(p1.x, p1.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.stroke();
+        });
+
+        laserBeams.forEach(lb => {
+          lb.progress += lb.speed;
+          if (lb.progress >= 1) lb.progress = 0;
+
+          const n1 = nodes[lb.from];
+          const n2 = nodes[lb.to];
+
+          const headP = lb.progress;
+          const tailP = Math.max(0, headP - lb.length);
+
+          const hx = n1.x + (n2.x - n1.x) * headP;
+          const hy = n1.y + (n2.y - n1.y) * headP;
+          const tx = n1.x + (n2.x - n1.x) * tailP;
+          const ty = n1.y + (n2.y - n1.y) * tailP;
+
+          const beamGrad = ctx.createLinearGradient(tx, ty, hx, hy);
+          beamGrad.addColorStop(0, 'rgba(255, 0, 60, 0)');
+          beamGrad.addColorStop(0.6, 'rgba(255, 0, 60, 0.8)');
+          beamGrad.addColorStop(1, '#ffffff');
+
+          ctx.save();
+          ctx.strokeStyle = beamGrad;
+          ctx.lineWidth = 2.4;
+          ctx.shadowColor = '#ff1744';
+          ctx.shadowBlur = 12;
+          ctx.beginPath();
+          ctx.moveTo(tx, ty);
+          ctx.lineTo(hx, hy);
+          ctx.stroke();
+          ctx.restore();
+        });
+
+        let hovered = null;
+
+        nodes.forEach((n) => {
+          const dToMouse = Math.hypot(n.x - mouse.x, n.y - mouse.y);
+          const isHovered = dToMouse < 32;
+          if (isHovered) hovered = n;
+
+          const auraRadius = isHovered ? 24 : 12;
+          const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, auraRadius * 2);
+          grad.addColorStop(0, 'rgba(255, 0, 60, 0.85)');
+          grad.addColorStop(0.5, 'rgba(255, 23, 68, 0.3)');
+          grad.addColorStop(1, 'rgba(255, 0, 60, 0)');
+
+          ctx.fillStyle = grad;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, auraRadius * 2, 0, Math.PI * 2);
+          ctx.fill();
+
+          ctx.fillStyle = isHovered ? '#ffffff' : '#ff003c';
+          ctx.shadowColor = '#ff1744';
+          ctx.shadowBlur = isHovered ? 18 : 8;
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, isHovered ? 7 : 4.5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          ctx.font = '700 10px "Plus Jakarta Sans", sans-serif';
+          ctx.fillStyle = isHovered ? '#ff1744' : 'rgba(245, 245, 245, 0.85)';
+          ctx.textAlign = 'center';
+          ctx.fillText(n.name, n.x, n.y + (n.y > centerY ? 20 : -14));
+        });
+
+        if (hovered && tooltip) {
+          tooltip.style.opacity = '1';
+          tooltip.style.left = `${hovered.x + 16}px`;
+          tooltip.style.top = `${hovered.y - 16}px`;
+          tooltipTitle.textContent = hovered.name;
+          tooltipVal.textContent = hovered.val;
+        } else if (tooltip && mouse.x === -1000) {
+          tooltip.style.opacity = '0';
+        }
+
+        requestAnimationFrame(renderConstellation);
+      }
+      renderConstellation();
+    })();
+
+    /* Terminal Typewriter Loop (DIPERBAIKI LOGIKA INCREMENT/DECREMENT NYA) */
+    (() => {
+      const typeElem = document.getElementById('terminalTypewriter');
+      if (!typeElem) return;
+      const quotes = (typeof portfolioData !== 'undefined' && portfolioData.typewriterQuotes && portfolioData.typewriterQuotes.length > 0) 
+        ? portfolioData.typewriterQuotes 
+        : [
+          "You are the CSS to my HTML <3",
+          "while (alive) { exploit(); research(); }"
+        ];
+      let qIdx = 0, charIdx = 0, isDeleting = false;
+
+      function typeLoop() {
+        const cur = quotes[qIdx];
+        
+        if (!isDeleting) {
+          charIdx++;
+          typeElem.textContent = cur.substring(0, charIdx);
+        } else {
+          charIdx--;
+          typeElem.textContent = cur.substring(0, charIdx);
+        }
+
+        let speed = isDeleting ? 25 : 50;
+
+        if (!isDeleting && charIdx === cur.length) {
+          speed = 2600;
+          isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          qIdx = (qIdx + 1) % quotes.length;
+          speed = 400;
+        }
+        setTimeout(typeLoop, speed);
+      }
+      typeLoop();
+    })();
+
+    /* Audio Wave Toggle */
+    (() => {
+      const btn = document.getElementById('audioWaveToggleBtn');
+      const icon = document.getElementById('audioWaveIcon');
+      const wave = document.getElementById('audioWaveBars');
+      let active = true;
+
+      if (btn && icon && wave) {
+        btn.addEventListener('click', () => {
+          active = !active;
+          icon.className = active ? "bi bi-pause-fill text-lg text-neon-bright" : "bi bi-play-fill text-lg text-neon-bright";
+          wave.style.opacity = active ? "1" : "0.2";
+        });
+      }
+    })();
+
+    /* Scroll-Triggered Progress Bar & Number Counter */
+    (() => {
+      const card = document.getElementById('skillsContainerCard');
+      if (!card) return;
+
+      let triggered = false;
+
+      function triggerSkillBars() {
+        if (triggered) return;
+        triggered = true;
+
+        const rows = document.querySelectorAll('.skill-item-row');
+        rows.forEach((row) => {
+          const target = parseInt(row.getAttribute('data-target'), 10);
+          const bar = row.querySelector('.neon-bar-fill');
+          const numLabel = row.querySelector('.skill-num-label');
+
+          if (bar && row.dataset.target !== "0") {
+            bar.style.width = bar.getAttribute('data-width');
+          }
+
+          if (numLabel && target > 0) {
+            let current = 0;
+            const stepTime = 1400 / target;
+            const counter = setInterval(() => {
+              current++;
+              numLabel.textContent = `${current}%`;
+              if (current >= target) {
+                clearInterval(counter);
+                numLabel.textContent = `${target}%`;
+              }
+            }, stepTime);
+          }
+        });
+      }
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            triggerSkillBars();
+          }
+        });
+      }, { threshold: 0.25 });
+
+      observer.observe(card);
+    })();
+
+    /* Tactical To-Do List HUD Generator */
+    (() => {
+      const container = document.getElementById('tacticalTodoListContainer');
+      if (!container || typeof portfolioData === 'undefined' || !portfolioData.targets) return;
+
+      portfolioData.targets.forEach((item) => {
+        const row = document.createElement('div');
+        row.className = "flex items-center justify-between p-3 rounded-xl bg-black/60 border border-white/[0.06] hover:border-neon-bright hover:shadow-neon-glow/20 transition-all group";
+
+        const left = document.createElement('div');
+        left.className = "flex items-center gap-3.5";
+
+        const checkCircle = document.createElement('div');
+        checkCircle.className = "w-5 h-5 rounded-md border border-neon-red/50 bg-neon-red/10 flex items-center justify-center text-neon-bright text-xs shadow-neon-tube shrink-0 group-hover:scale-110 transition-transform";
+        checkCircle.innerHTML = '<i class="bi bi-check2"></i>';
+
+        const titleText = document.createElement('span');
+        titleText.className = "text-xs md:text-sm font-semibold text-zinc-200 group-hover:text-white transition-colors";
+        titleText.textContent = item.title;
+
+        left.appendChild(checkCircle);
+        left.appendChild(titleText);
+
+        const badge = document.createElement('span');
+        badge.className = "text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black/80 border border-white/10 text-zinc-400 group-hover:border-neon-bright/50 group-hover:text-neon-bright transition-colors";
+        badge.textContent = `${item.tag} // ${item.status}`;
+
+        row.appendChild(left);
+        row.appendChild(badge);
+        container.appendChild(row);
+      });
+    })();
+
+    /* Education Tree-Fall Cascade */
+    (() => {
+      const container = document.getElementById('educationWaterfallTree');
+      if (!container || typeof portfolioData === 'undefined' || !portfolioData.education) return;
+
+      portfolioData.education.forEach((edu, idx) => {
+        const item = document.createElement('div');
+        item.className = "relative flex items-center gap-4 md:gap-5 group tree-item-anim";
+        item.style.transitionDelay = `${idx * 0.18}s`;
+
+        const dot = document.createElement('div');
+        dot.className = "absolute -left-6 md:-left-10 w-4 h-4 rounded-full bg-neon-bright border-2 border-white tree-node-pulse shrink-0";
+
+        const card = document.createElement('div');
+        card.className = "stealth-card flex-1 rounded-2xl p-4 md:p-5 flex items-center gap-4 hover:border-neon-bright/60 transition-all";
+
+        const logoBox = document.createElement('div');
+        logoBox.className = "w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 rounded-2xl bg-zinc-950/90 border border-white/10 group-hover:border-neon-bright/60 flex items-center justify-center p-2.5 md:p-3 shrink-0 overflow-hidden relative shadow-inner shadow-black transition-all";
+        
+        const img = document.createElement('img');
+        img.src = edu.logo;
+        img.alt = edu.name;
+        img.className = "w-full h-full object-contain";
+
+        const fallback = document.createElement('span');
+        fallback.className = "hidden font-bold text-xs text-neon-bright";
+        fallback.textContent = edu.initial;
+
+        img.onerror = () => {
+          img.style.display = 'none';
+          fallback.style.display = 'block';
+        };
+
+        logoBox.appendChild(img);
+        logoBox.appendChild(fallback);
+
+        const info = document.createElement('div');
+        info.className = "flex-1 min-w-0";
+
+        const topRow = document.createElement('div');
+        topRow.className = "flex items-center justify-between gap-2";
+
+        const name = document.createElement('h3');
+        name.className = "text-sm md:text-base font-bold text-white truncate";
+        name.textContent = edu.name;
+
+        const period = document.createElement('span');
+        period.className = "text-[11px] font-mono text-neon-bright font-bold shrink-0";
+        period.textContent = edu.period;
+
+        topRow.appendChild(name);
+        topRow.appendChild(period);
+
+        const status = document.createElement('span');
+        status.className = "text-xs text-zinc-400 block mt-1";
+        status.textContent = edu.status;
+
+        info.appendChild(topRow);
+        info.appendChild(status);
+
+        card.appendChild(logoBox);
+        card.appendChild(info);
+
+        item.appendChild(dot);
+        item.appendChild(card);
+        container.appendChild(item);
+      });
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const items = container.querySelectorAll('.tree-item-anim');
+            items.forEach(el => el.classList.add('in-view'));
+          }
+        });
+      }, { threshold: 0.2 });
+
+      observer.observe(container);
+    })();
+
+    /* Infinite Social Marquee Track */
+    (() => {
+      const track = document.getElementById('socialMarqueeTrack');
+      if (!track || typeof portfolioData === 'undefined' || !portfolioData.socials) return;
+
+      const fullList = [...portfolioData.socials, ...portfolioData.socials];
+
+      fullList.forEach((item) => {
+        const a = document.createElement('a');
+        a.href = item.url;
+        a.target = "_blank";
+        a.rel = "noopener noreferrer";
+        a.className = "stealth-card px-4 py-2.5 rounded-xl flex items-center gap-2.5 hover:border-neon-bright hover:shadow-neon-glow text-xs text-zinc-300 hover:text-white transition-all shrink-0";
+
+        const i = document.createElement('i');
+        i.className = `bi ${item.icon} text-neon-bright text-sm`;
+
+        const name = document.createElement('span');
+        name.className = "font-semibold";
+        name.textContent = item.platform;
+
+        a.appendChild(i);
+        a.appendChild(name);
+        track.appendChild(a);
+      });
+    })();
+
+    /* =========================================================================
+       GUESTBOOK ENGINE DENGAN TACTICAL MODAL DELETE (DIPERBAIKI 100% AMAN & STABIL)
+       ========================================================================= */
+    let db = null;
+    let targetDocToDelete = null;
+
+    function initGuestbookEngine() {
+      // Inisialisasi Firebase App & Firestore
+      if (typeof firebase !== 'undefined' && portfolioData.firebaseConfig && portfolioData.firebaseConfig.projectId) {
+        try {
+          if (!firebase.apps.length) {
+            firebase.initializeApp(portfolioData.firebaseConfig);
+          }
+          db = firebase.firestore();
+        } catch (e) {
+          console.error("Firebase init error:", e);
+        }
+      }
+
+      const guestFeed = document.getElementById('guestFeed');
+      const guestTotalCount = document.getElementById('guestTotalCount');
+      const guestForm = document.getElementById('guestbookForm');
+      const guestInput = document.getElementById('guestNameInput');
+
+      // Bind Modal Button Listeners
+      const modalCancelBtn = document.getElementById('modalCancelBtn');
+      const modalConfirmBtn = document.getElementById('modalConfirmDeleteBtn');
+      const modalInput = document.getElementById('adminPasskeyModalInput');
+      const modalError = document.getElementById('modalPasskeyError');
+      const deleteModal = document.getElementById('adminDeleteModal');
+
+      if (modalCancelBtn) {
+        modalCancelBtn.onclick = () => {
+          if (deleteModal) {
+            deleteModal.classList.add('hidden');
+            deleteModal.classList.remove('flex');
+          }
+          targetDocToDelete = null;
+        };
+      }
+
+      if (modalConfirmBtn) {
+        modalConfirmBtn.onclick = async () => {
+          if (!modalInput || !targetDocToDelete || !db) return;
+          const inputKey = modalInput.value.trim();
+          const validKey = portfolioData.adminPasskey || "natcat2026";
+
+          if (inputKey === validKey) {
+            try {
+              modalConfirmBtn.textContent = "Menghapus...";
+              modalConfirmBtn.disabled = true;
+              await db.collection("guestbook").doc(targetDocToDelete).delete();
+              
+              if (deleteModal) {
+                deleteModal.classList.add('hidden');
+                deleteModal.classList.remove('flex');
+              }
+              targetDocToDelete = null;
+            } catch (err) {
+              alert("Gagal menghapus: " + err.message);
+            } finally {
+              modalConfirmBtn.textContent = "Hapus Data";
+              modalConfirmBtn.disabled = false;
+            }
+          } else {
+            if (modalError) modalError.classList.remove('hidden');
+            modalInput.classList.add('border-red-500');
+            setTimeout(() => modalInput.classList.remove('border-red-500'), 1500);
+          }
+        };
+      }
+
+      if (modalInput) {
+        modalInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            if (modalConfirmBtn) modalConfirmBtn.click();
+          }
+        });
+      }
+
+      // 1. Real-Time Cloud Listener
+      if (db) {
+        db.collection("guestbook")
+          .orderBy("timestamp", "desc")
+          .limit(60)
+          .onSnapshot((snapshot) => {
+            if (!guestFeed || !guestTotalCount) return;
+            guestFeed.innerHTML = '';
+            guestTotalCount.textContent = `Total: ${snapshot.size}`;
+
+            if (snapshot.empty) {
+              guestFeed.innerHTML = '<div class="text-center text-xs text-zinc-500 py-4">Belum ada jejak tersimpan di cloud. Jadilah yang pertama!</div>';
+              return;
+            }
+
+            snapshot.forEach((doc) => {
+              const data = doc.data();
+              const row = document.createElement('div');
+              row.className = "px-3.5 py-2.5 rounded-xl bg-black/60 border border-white/5 flex items-center justify-between text-xs hover:border-neon-bright/30 transition-all group";
+
+              // Sisi Kiri
+              const left = document.createElement('div');
+              left.className = "flex items-center gap-2";
+
+              const dot = document.createElement('span');
+              dot.className = "w-1.5 h-1.5 rounded-full bg-emerald-400";
+
+              const name = document.createElement('span');
+              name.className = "font-medium text-zinc-200";
+              name.textContent = data.name;
+
+              left.appendChild(dot);
+              left.appendChild(name);
+
+              // Sisi Kanan
+              const right = document.createElement('div');
+              right.className = "flex items-center gap-2.5";
+
+              const time = document.createElement('span');
+              time.className = "font-mono text-[10px] text-zinc-500";
+              time.textContent = data.time || "Baru saja";
+
+              // Tombol Delete
+              const delBtn = document.createElement('button');
+              delBtn.type = "button";
+              delBtn.className = "text-zinc-500 hover:text-neon-bright hover:bg-neon-red/10 rounded-lg p-1.5 transition-all cursor-pointer flex items-center justify-center opacity-60 group-hover:opacity-100";
+              delBtn.title = "Hapus jejak (Khusus Admin)";
+              delBtn.innerHTML = '<i class="bi bi-trash3 text-xs pointer-events-none"></i>';
+              
+              delBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                targetDocToDelete = doc.id;
+                const modalTargetName = document.getElementById('modalTargetGuestName');
+                if (modalTargetName) modalTargetName.textContent = `Target: "${data.name}"`;
+                if (modalInput) modalInput.value = '';
+                if (modalError) modalError.classList.add('hidden');
+                
+                if (deleteModal) {
+                  deleteModal.classList.remove('hidden');
+                  deleteModal.classList.add('flex');
+                }
+                if (modalInput) setTimeout(() => modalInput.focus(), 50);
+              });
+
+              right.appendChild(time);
+              right.appendChild(delBtn);
+
+              row.appendChild(left);
+              row.appendChild(right);
+              guestFeed.appendChild(row);
+            });
+          }, (error) => {
+            console.error("Firestore read error:", error);
+            if (guestFeed) {
+              guestFeed.innerHTML = '<div class="text-center text-xs text-red-500/80 py-4 font-mono">[ERROR] Gagal menyambung ke Firestore. Cek Firestore Rules di Firebase Console.</div>';
+            }
+          });
+      } else {
+        if (guestFeed) {
+          guestFeed.innerHTML = '<div class="text-center text-xs text-zinc-500 py-4 font-mono">[STANDBY] Masukkan Firebase Config di data.js untuk mengaktifkan Cloud Database.</div>';
+        }
+      }
+
+      // 2. Submit Absen
+      if (guestForm && guestInput) {
+        guestForm.onsubmit = async (e) => {
+          e.preventDefault();
+          const val = guestInput.value.trim();
+          if (!val || !db) return;
+
+          const submitBtn = guestForm.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Mengirim...";
+          }
+
+          try {
+            await db.collection("guestbook").add({
+              name: val,
+              time: new Date().toLocaleDateString("id-ID", { 
+                day: "numeric", 
+                month: "short", 
+                year: "numeric", 
+                hour: "2-digit", 
+                minute: "2-digit" 
+              }),
+              timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            guestInput.value = '';
+          } catch (err) {
+            alert("Gagal mengirim: " + err.message);
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = "Absen Sekarang";
+            }
+          }
+        };
+      }
+    }
+
+    /* DevTools Console Easter Egg */
+    console.log(
+      "%c[!] SYSTEM ACCESS GRANTED %c\nLooking for flags? You found the developer console.\nFLAG{n4tc4t_c0ns0l3_1nsp3ct_m4st3r_2026}",
+      "color: #ff003c; font-size: 16px; font-weight: bold;",
+      "color: #94a3b8; font-size: 12px;"
+    );
+  </script>
+</body>
+</html>
