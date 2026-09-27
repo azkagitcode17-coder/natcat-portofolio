@@ -27,7 +27,7 @@ const portfolioData = {
     "You bypassed my firewall and got root access to my heart.",
     "while (alive) { exploit(); research(); }",
     "In a world of 0s and 1s, you are my absolute 1.",
-    "Menganalisis logika biner dan struktur memori sistem."
+    "print("Hello My World <3")"
   ],
 
   // 3. 8 Domain Cyber (Telemetry & Canvas PicoCTF)
