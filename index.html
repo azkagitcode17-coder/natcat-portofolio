@@ -7,7 +7,7 @@
 
   <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Bootstrap Icons CDN -->
@@ -158,7 +158,7 @@
       animation-play-state: paused;
     }
 
-    /* Waterfall Tree Stem (Presisi Sumbu 20px) */
+    /* Waterfall Tree Stem */
     .tree-stem-line {
       position: absolute;
       top: 24px;
@@ -219,7 +219,7 @@
         </div>
       </a>
 
-      <!-- Menu Navigasi Lengkap -->
+      <!-- Menu Navigasi Lengkap & Responsif -->
       <div class="hidden md:flex items-center gap-2.5 lg:gap-4 xl:gap-5 text-xs font-semibold text-zinc-300">
         <a href="#orbital-hero" class="hover:text-neon-bright transition-colors flex items-center gap-1"><i class="bi bi-diagram-3-fill text-neon-red"></i> Constellation</a>
         <a href="#cyber-area" class="hover:text-neon-bright transition-colors flex items-center gap-1"><i class="bi bi-shield-shaded text-neon-red"></i> Arsenal</a>
@@ -289,7 +289,7 @@
         <div class="stealth-card rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center text-center group hover:border-neon-bright/60 transition-all">
           <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-zinc-950/80 border border-white/10 flex items-center justify-center mb-2 overflow-hidden p-2 shadow-inner">
             <img 
-              id="heroLogoMan"
+              id="heroLogoMan" 
               src="assets/logo-man.svg" 
               alt="MAN Temanggung" 
               class="w-full h-full object-contain"
@@ -305,7 +305,7 @@
         <div class="stealth-card rounded-2xl p-3 sm:p-4 flex flex-col items-center justify-center text-center group hover:border-neon-bright/60 transition-all">
           <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-zinc-950/80 border border-neon-red/30 flex items-center justify-center mb-2 overflow-hidden p-2 shadow-inner shadow-neon-glow/20">
             <img 
-              id="heroLogoIts"
+              id="heroLogoIts" 
               src="assets/logo-its.svg" 
               alt="ITS Surabaya" 
               class="w-full h-full object-contain"
@@ -416,7 +416,7 @@
         </div>
 
         <div class="space-y-3.5 sm:space-y-4" id="skillBarsList">
-          <!-- Injected dynamically from portfolioData.skills -->
+          <!-- Injected dynamically -->
         </div>
       </div>
 
@@ -428,7 +428,7 @@
           <div>
             <span class="text-[10px] sm:text-[11px] font-bold text-zinc-400 font-mono uppercase tracking-wider">TOTAL FLAGS CAPTURED 🚩</span>
             <div id="totalFlagsCounter" class="text-3xl sm:text-4xl font-extrabold font-mono text-white mt-1 text-neon-bright drop-shadow-[0_0_16px_rgba(255,0,60,0.7)]">
-              0
+              15+
             </div>
             <span class="text-[9px] sm:text-[10px] text-zinc-400">Verified CTF Submissions</span>
           </div>
@@ -445,7 +445,7 @@
         <div class="stealth-card rounded-2xl p-4 sm:p-5 flex-1">
           <span class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider block mb-3 font-mono">SENJATA UTAMA (CYBER ARSENAL):</span>
           <div class="flex flex-wrap gap-2" id="cyberToolsContainer">
-            <!-- Injected dynamically from portfolioData.tools -->
+            <!-- Injected dynamically -->
           </div>
         </div>
 
@@ -454,7 +454,7 @@
     </div>
   </section>
 
-  <!-- MEJA DECK BADGES -->
+  <!-- MEJA DECK BADGES (COMING SOON BERSIH) -->
   <section id="deck-badges-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8 relative z-10 scroll-mt-20">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-5 sm:mb-6">
       <div class="flex items-center gap-2.5">
@@ -493,7 +493,7 @@
     </div>
   </section>
 
-  <!-- SERTIFIKAT -->
+  <!-- SERTIFIKAT (COMING SOON BERSIH) -->
   <section id="certificates-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8 relative z-10 scroll-mt-20">
     <div class="stealth-card rounded-3xl p-5 sm:p-6 md:p-8 border border-neon-red/30 shadow-neon-glow/15">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-5 sm:mb-6 border-b border-white/10">
@@ -671,53 +671,173 @@
 
   <!-- 2. Core Execution Engine -->
   <script>
+    /* =========================================================================
+       FAIL-SAFE BUILT-IN DATA NATCAT (Menjamin web tidak akan pernah kosong)
+       ========================================================================= */
+    const fallbackPortfolioData = {
+      profilePhoto: "assets/profile.jpeg",
+      flags: 15,
+      explorationDuration: "8+ Bulan",
+      adminPasskey: "natcat2026",
+      typewriterQuotes: [
+        "while (alive) { exploit(); research(); }",
+        "You are the CSS to my HTML <3",
+        "Natcat // Cybersecurity & Systems Practitioner"
+      ],
+      heroBadges: {
+        manLogo: "assets/logo-man.svg",
+        itsLogo: "assets/logo-its.svg"
+      },
+      skills: [
+        { name: "General Skills", val: 40, angle: -Math.PI / 2, rFactor: 0.44 },
+        { name: "Cryptography", val: 20, angle: -Math.PI / 4, rFactor: 0.46 },
+        { name: "Web Exploitation", val: null, angle: 0, rFactor: 0.45 },
+        { name: "Forensics", val: 60, angle: Math.PI / 4, rFactor: 0.47 },
+        { name: "Binary Exploitation", val: null, angle: Math.PI / 2, rFactor: 0.44 },
+        { name: "Reverse Engineering", val: 70, angle: (3 * Math.PI) / 4, rFactor: 0.46 },
+        { name: "Network Knowledge", val: 75, angle: Math.PI, rFactor: 0.45 },
+        { name: "OSINT", val: 15, angle: (-3 * Math.PI) / 4, rFactor: 0.47 }
+      ],
+      tools: [
+        { name: "Linux / CLI", icon: "bi-terminal-fill", color: "text-rose-500" },
+        { name: "Ghidra", icon: "bi-cpu-fill", color: "text-emerald-400" },
+        { name: "Wireshark", icon: "bi-activity", color: "text-sky-400" },
+        { name: "steghide", icon: "bi-eye-slash-fill", color: "text-amber-400" },
+        { name: "xxd / Hex", icon: "bi-file-binary-fill", color: "text-purple-400" },
+        { name: "OpenSSL", icon: "bi-key-fill", color: "text-yellow-400" },
+        { name: "John the Ripper", icon: "bi-unlock-fill", color: "text-red-400" },
+        { name: "Python", icon: "bi-filetype-py", color: "text-blue-400" },
+        { name: "Burp Suite", icon: "bi-shield-check", color: "text-orange-400" },
+        { name: "Nmap", icon: "bi-radar", color: "text-teal-400" }
+      ],
+      targets: [
+        { title: "Pemantapan UTBK-SNBT 2027 // Target Subtes PK & PM", tag: "TARGET 700+", status: "FOKUS UTAMA" },
+        { title: "Target Seleksi Masuk Teknik Informatika / Cyber Security ITS Surabaya", tag: "KAMPUS IMPIAN", status: "STRATEGIS" },
+        { title: "PascalCTF 2026 & Kompetisi CTF Nasional", tag: "KOMPETISI", status: "AKTIF" },
+        { title: "Riset Binary Exploitation, Stack Overflow, & Memory Defense", tag: "CTF PWN", status: "RESEARCH" },
+        { title: "Eksplorasi Reverse Engineering & Decompiling via Ghidra", tag: "REVERSE ENG", status: "BERJALAN" },
+        { title: "Digital Forensics Network Packet Inspection Wireshark", tag: "FORENSIK", status: "KONSISTEN" },
+        { title: "Pengumpulan Lencana Kredensial Keamanan Siber Credly", tag: "SERTIFIKASI", status: "STANDBY" },
+        { title: "Deployment Portofolio Stealth Cyber Deck di Vercel", tag: "LIVE DEPLOY", status: "SELESAI" },
+        { title: "Pengembangan Web App Terintegrasi AI Gemini Flash API", tag: "DEV ARCH", status: "TESTED" },
+        { title: "Penguatan Penalaran Matematika Kuantitatif Latihan Tryout", tag: "AKADEMIK", status: "RUTIN" }
+      ],
+      achievements: [
+        {
+          featured: true,
+          badge: "CTF PLAYER",
+          category: "COMPETITION // SYSTEM RECON",
+          title: "PascalCTF 2026 & CTF Competition Journey",
+          desc: "Aktif menyelesaikan tantangan Capture The Flag pada domain Digital Forensics, Reverse Engineering, dan Network Analysis menggunakan toolchain analisis biner mendalam.",
+          tags: ["PascalCTF", "Ghidra", "Wireshark", "Reverse Engineering", "Linux"]
+        },
+        {
+          featured: false,
+          badge: "DEVELOPER",
+          category: "SYSTEMS & FULLSTACK DEV",
+          title: "Stealth Cyber Deck & Productivity Dashboard",
+          desc: "Merancang antarmuka bertema cybersecurity dengan performa tinggi, visualizer kanvas rasi bintang terkalibrasi, dan integrasi backend buku tamu cloud.",
+          tags: ["HTML5 Canvas", "Tailwind CSS", "Firebase Firestore", "Vercel"]
+        }
+      ],
+      education: [
+        {
+          name: "MAN Temanggung",
+          period: "2024 — 2027",
+          status: "Siswa Aktif // Kelas 12 SMA",
+          logo: "assets/logo-man.svg",
+          initial: "MAN"
+        },
+        {
+          name: "Institut Teknologi Sepuluh Nopember (ITS)",
+          period: "Target 2027",
+          status: "Target Studi // Teknik Informatika & Keamanan Siber",
+          logo: "assets/logo-its.svg",
+          initial: "ITS"
+        }
+      ],
+      socials: [
+        { platform: "GitHub", icon: "bi-github", url: "https://github.com" },
+        { platform: "Instagram", icon: "bi-instagram", url: "https://instagram.com" },
+        { platform: "LinkedIn", icon: "bi-linkedin", url: "https://linkedin.com" },
+        { platform: "Discord", icon: "bi-discord", url: "#" },
+        { platform: "Telegram", icon: "bi-telegram", url: "#" }
+      ],
+      badges: [],
+      certificates: { courses: [], competitions: [], bugHunter: [] }
+    };
+
+    // Gabungkan data dari data.js bila ada, gunakan fallback bila tidak ada
+    function getActiveData() {
+      if (typeof portfolioData !== 'undefined' && portfolioData) {
+        return {
+          profilePhoto: portfolioData.profilePhoto || fallbackPortfolioData.profilePhoto,
+          flags: typeof portfolioData.flags !== 'undefined' ? portfolioData.flags : fallbackPortfolioData.flags,
+          explorationDuration: portfolioData.explorationDuration || fallbackPortfolioData.explorationDuration,
+          adminPasskey: portfolioData.adminPasskey || fallbackPortfolioData.adminPasskey,
+          typewriterQuotes: (portfolioData.typewriterQuotes && portfolioData.typewriterQuotes.length > 0) ? portfolioData.typewriterQuotes : fallbackPortfolioData.typewriterQuotes,
+          heroBadges: portfolioData.heroBadges || fallbackPortfolioData.heroBadges,
+          skills: (portfolioData.skills && portfolioData.skills.length > 0) ? portfolioData.skills : fallbackPortfolioData.skills,
+          tools: (portfolioData.tools && portfolioData.tools.length > 0) ? portfolioData.tools : fallbackPortfolioData.tools,
+          targets: (portfolioData.targets && portfolioData.targets.length > 0) ? portfolioData.targets : fallbackPortfolioData.targets,
+          achievements: (portfolioData.achievements && portfolioData.achievements.length > 0) ? portfolioData.achievements : fallbackPortfolioData.achievements,
+          education: (portfolioData.education && portfolioData.education.length > 0) ? portfolioData.education : fallbackPortfolioData.education,
+          socials: (portfolioData.socials && portfolioData.socials.length > 0) ? portfolioData.socials : fallbackPortfolioData.socials,
+          badges: portfolioData.badges || [],
+          certificates: portfolioData.certificates || { courses: [], competitions: [], bugHunter: [] },
+          firebaseConfig: portfolioData.firebaseConfig || null
+        };
+      }
+      return fallbackPortfolioData;
+    }
+
     /* -------------------------------------------------------------
-       FAIL-SAFE DYNAMIC RENDER PIPELINE
+       EXECUTION ENGINE (DIJAMIN JALAN)
        ------------------------------------------------------------- */
     function renderAllComponents() {
-      if (typeof portfolioData === 'undefined') return;
+      const data = getActiveData();
 
       // 1. Sinkronisasi Foto Profil
       const heroPhoto = document.getElementById('heroPhoto');
-      if (heroPhoto && portfolioData.profilePhoto) {
-        heroPhoto.src = portfolioData.profilePhoto;
+      if (heroPhoto && data.profilePhoto) {
+        heroPhoto.src = data.profilePhoto;
       }
 
       // 2. Flags & Duration
       const flagElem = document.getElementById('totalFlagsCounter');
-      if (flagElem && typeof portfolioData.flags !== 'undefined') {
-        flagElem.textContent = portfolioData.flags;
+      if (flagElem && typeof data.flags !== 'undefined') {
+        flagElem.textContent = data.flags;
       }
 
       const durElem = document.getElementById('explorationDurationValue');
-      if (durElem && portfolioData.explorationDuration) {
-        durElem.textContent = portfolioData.explorationDuration;
+      if (durElem && data.explorationDuration) {
+        durElem.textContent = data.explorationDuration;
       }
 
-      // 3. Render Komponen Utama
-      renderTools();
-      renderSkillBars();
-      renderDeckBadges();
-      renderAchievements();
-      renderEducation();
-      renderTargets();
-      renderSocialMarquee();
+      // 3. Render Komponen Dinamis
+      renderTools(data.tools);
+      renderSkillBars(data.skills);
+      renderDeckBadges(data.badges);
+      renderAchievements(data.achievements);
+      renderEducation(data.education);
+      renderTargets(data.targets);
+      renderSocialMarquee(data.socials);
       switchCertTab('courses');
       initGuestbookEngine();
     }
 
-    // Eksekusi fail-safe berlapis
+    // Jalankan segera
     renderAllComponents();
     document.addEventListener('DOMContentLoaded', renderAllComponents);
     window.addEventListener('load', renderAllComponents);
 
     /* Render Cyber Tools */
-    function renderTools() {
+    function renderTools(tools) {
       const container = document.getElementById('cyberToolsContainer');
-      if (!container || typeof portfolioData === 'undefined' || !portfolioData.tools) return;
+      if (!container || !tools) return;
       container.innerHTML = '';
 
-      portfolioData.tools.forEach(tool => {
+      tools.forEach(tool => {
         const span = document.createElement('span');
         span.className = "px-3 py-1.5 rounded-lg bg-black/70 border border-white/10 text-xs font-medium text-zinc-200 hover:border-neon-bright hover:shadow-neon-glow transition-all flex items-center gap-1.5 cursor-default";
         span.innerHTML = `<i class="bi ${tool.icon || 'bi-gear'} ${tool.color || 'text-neon-bright'}"></i> ${tool.name}`;
@@ -725,13 +845,13 @@
       });
     }
 
-    /* Render 8 Domain Cyber Bars (Langsung Tampil + Animasi Width) */
-    function renderSkillBars() {
+    /* Render 8 Domain Cyber Bars */
+    function renderSkillBars(skills) {
       const list = document.getElementById('skillBarsList');
-      if (!list || typeof portfolioData === 'undefined' || !portfolioData.skills) return;
+      if (!list || !skills) return;
       list.innerHTML = '';
 
-      portfolioData.skills.forEach(skill => {
+      skills.forEach(skill => {
         const row = document.createElement('div');
         row.className = "skill-item-row";
         const hasVal = skill.val !== null && typeof skill.val !== 'undefined';
@@ -764,13 +884,13 @@
     }
 
     /* Render Meja Deck Badges (Coming Soon Bersih) */
-    function renderDeckBadges() {
+    function renderDeckBadges(badges) {
       const container = document.getElementById('deckBadgesContainer');
       const countLabel = document.getElementById('badgeUnlockedStatusCount');
       if (!container) return;
       container.innerHTML = '';
 
-      const badges = (typeof portfolioData !== 'undefined' && portfolioData.badges) ? portfolioData.badges : [];
+      badges = badges || [];
 
       if (badges.length === 0) {
         if (countLabel) countLabel.textContent = "COMING SOON";
@@ -826,9 +946,8 @@
       const container = document.getElementById('certTabContent');
       if (!container) return;
 
-      const certs = (typeof portfolioData !== 'undefined' && portfolioData.certificates && portfolioData.certificates[tab]) 
-        ? portfolioData.certificates[tab] 
-        : [];
+      const data = getActiveData();
+      const certs = (data.certificates && data.certificates[tab]) ? data.certificates[tab] : [];
 
       if (certs.length === 0) {
         container.innerHTML = `
@@ -875,12 +994,12 @@
     }
 
     /* Render Achievement Wall */
-    function renderAchievements() {
+    function renderAchievements(list) {
       const grid = document.getElementById('asymmetricAchievementsGrid');
       if (!grid) return;
       grid.innerHTML = '';
 
-      const list = (typeof portfolioData !== 'undefined' && portfolioData.achievements) ? portfolioData.achievements : [];
+      list = list || [];
 
       if (list.length === 0) {
         grid.innerHTML = `
@@ -935,11 +1054,11 @@
     }
 
     /* Render Riwayat Pendidikan (Titik Sumbu Tengah Presisi X=20px, Y=Tengah Kartu) */
-    function renderEducation() {
+    function renderEducation(list) {
       const container = document.getElementById('educationWaterfallTree');
       if (!container) return;
 
-      const list = (typeof portfolioData !== 'undefined' && portfolioData.education) ? portfolioData.education : [];
+      list = list || [];
       container.innerHTML = '<div class="tree-stem-line" id="educationTreeStem"></div>';
 
       if (list.length === 0) {
@@ -1014,11 +1133,11 @@
     }
 
     /* Render Target Milestones */
-    function renderTargets() {
+    function renderTargets(list) {
       const container = document.getElementById('tacticalTodoListContainer');
       if (!container) return;
 
-      const list = (typeof portfolioData !== 'undefined' && portfolioData.targets) ? portfolioData.targets : [];
+      list = list || [];
 
       if (list.length === 0) {
         container.innerHTML = `
@@ -1058,11 +1177,11 @@
       });
     }
 
-    /* Render Medsos Infinite Marquee (Loop Mulus) */
-    function renderSocialMarquee() {
+    /* Render Medsos Infinite Marquee */
+    function renderSocialMarquee(socials) {
       const track = document.getElementById('socialMarqueeTrack');
       if (!track) return;
-      const socials = (typeof portfolioData !== 'undefined' && portfolioData.socials) ? portfolioData.socials : [];
+      socials = socials || [];
       if (socials.length === 0) return;
       track.innerHTML = '';
 
@@ -1191,25 +1310,13 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
-      const defaultSkills = [
-        { name: "GENERAL SKILLS", val: "40%", angle: -Math.PI / 2, rFactor: 0.44 },
-        { name: "CRYPTOGRAPHY", val: "20%", angle: -Math.PI / 4, rFactor: 0.46 },
-        { name: "WEB EXPLOITATION", val: "[RESEARCH]", angle: 0, rFactor: 0.45 },
-        { name: "FORENSICS", val: "60%", angle: Math.PI / 4, rFactor: 0.47 },
-        { name: "BINARY EXPLOITATION", val: "[RESEARCH]", angle: Math.PI / 2, rFactor: 0.44 },
-        { name: "REVERSE ENGINEERING", val: "70%", angle: (3 * Math.PI) / 4, rFactor: 0.46 },
-        { name: "NETWORK KNOWLEDGE", val: "75%", angle: Math.PI, rFactor: 0.45 },
-        { name: "OSINT", val: "15%", angle: (-3 * Math.PI) / 4, rFactor: 0.47 }
-      ];
-
-      const domains = (typeof portfolioData !== 'undefined' && portfolioData.skills && portfolioData.skills.length === 8) 
-        ? portfolioData.skills.map((s, idx) => ({
-            name: s.name.toUpperCase(),
-            val: s.val !== null ? `${s.val}%` : "[RESEARCH]",
-            angle: (typeof s.angle === 'number') ? s.angle : defaultSkills[idx].angle,
-            rFactor: s.rFactor || defaultSkills[idx].rFactor
-          }))
-        : defaultSkills;
+      const data = getActiveData();
+      const domains = data.skills.map((s, idx) => ({
+        name: s.name.toUpperCase(),
+        val: s.val !== null ? `${s.val}%` : "[RESEARCH]",
+        angle: s.angle,
+        rFactor: s.rFactor || 0.45
+      }));
 
       // Jaringan topologi CTF asimetris asli
       const connections = [
@@ -1274,7 +1381,6 @@
           const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX);
           const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY);
 
-          // Jika pergeseran jari > 10px, anggap sebagai scroll gesture murni
           if (deltaX > 10 || deltaY > 10) return;
 
           const rect = canvas.getBoundingClientRect();
@@ -1413,7 +1519,7 @@
 
           tooltip.style.left = `${tipX}px`;
           tooltip.style.top = `${tipY}px`;
-        } else if (tooltip && mouse.x === -1000) {
+        } else if (tooltip) {
           tooltip.style.opacity = '0';
         }
 
@@ -1426,9 +1532,8 @@
     (() => {
       const typeElem = document.getElementById('terminalTypewriter');
       if (!typeElem) return;
-      const quotes = (typeof portfolioData !== 'undefined' && portfolioData.typewriterQuotes && portfolioData.typewriterQuotes.length > 0) 
-        ? portfolioData.typewriterQuotes 
-        : ["You are the CSS to my HTML <3", "while (alive) { exploit(); research(); }"];
+      const data = getActiveData();
+      const quotes = data.typewriterQuotes;
       let qIdx = 0, charIdx = 0, isDeleting = false;
 
       function typeLoop() {
@@ -1485,10 +1590,11 @@
     const LOCAL_BACKUP_KEY = 'natcat_guestbook_backup';
 
     function initGuestbookEngine() {
-      if (typeof firebase !== 'undefined' && typeof portfolioData !== 'undefined' && portfolioData.firebaseConfig && portfolioData.firebaseConfig.projectId) {
+      const data = getActiveData();
+      if (typeof firebase !== 'undefined' && data.firebaseConfig && data.firebaseConfig.projectId) {
         try {
           if (!firebase.apps.length) {
-            firebase.initializeApp(portfolioData.firebaseConfig);
+            firebase.initializeApp(data.firebaseConfig);
           }
           db = firebase.firestore();
         } catch (e) {
@@ -1540,7 +1646,7 @@
         modalConfirmBtn.onclick = async () => {
           if (!modalInput || !targetDocToDelete) return;
           const inputKey = modalInput.value.trim();
-          const validKey = portfolioData.adminPasskey || "natcat2026";
+          const validKey = data.adminPasskey || "natcat2026";
 
           if (inputKey === validKey) {
             try {
@@ -1666,8 +1772,8 @@
             }
 
             snapshot.forEach((doc) => {
-              const data = doc.data();
-              guestFeed.appendChild(createGuestRow(doc.id, data.name, data.time));
+              const dataDoc = doc.data();
+              guestFeed.appendChild(createGuestRow(doc.id, dataDoc.name, dataDoc.time));
             });
           }, (error) => {
             console.warn("Firestore offline, beralih ke local storage:", error.message);
