@@ -7,7 +7,7 @@
 
   <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Bootstrap Icons CDN -->
@@ -119,7 +119,7 @@
       background: linear-gradient(90deg, #9e1338, #ff003c, #ffffff);
       box-shadow: 0 0 14px #ff003c, 0 0 4px #ffffff;
       width: 0%;
-      transition: width 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* Tactical Badge Deck Mat Pattern */
@@ -152,7 +152,7 @@
     .marquee-track {
       display: flex;
       width: max-content;
-      animation: marqueeScroll 28s linear infinite;
+      animation: marqueeScroll 26s linear infinite;
     }
     .marquee-wrapper:hover .marquee-track {
       animation-play-state: paused;
@@ -219,7 +219,7 @@
         </div>
       </a>
 
-      <!-- Menu Navigasi Lengkap & Responsif -->
+      <!-- Menu Navigasi Lengkap -->
       <div class="hidden md:flex items-center gap-2.5 lg:gap-4 xl:gap-5 text-xs font-semibold text-zinc-300">
         <a href="#orbital-hero" class="hover:text-neon-bright transition-colors flex items-center gap-1"><i class="bi bi-diagram-3-fill text-neon-red"></i> Constellation</a>
         <a href="#cyber-area" class="hover:text-neon-bright transition-colors flex items-center gap-1"><i class="bi bi-shield-shaded text-neon-red"></i> Arsenal</a>
@@ -399,8 +399,8 @@
     </div>
   </section>
 
-  <!-- Cybersecurity & Technical Arsenal -->
-  <section id="cyber-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-8 sm:py-12 relative z-10">
+  <!-- Cybersecurity & Technical Arsenal (8 DOMAIN TELEMETRY) -->
+  <section id="cyber-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-8 sm:py-12 relative z-10 scroll-mt-20">
     <div class="flex items-center gap-2.5 mb-6 sm:mb-7">
       <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
       <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Cybersecurity & Technical Arsenal</h2>
@@ -415,7 +415,9 @@
           <span class="text-[10px] sm:text-[11px] font-mono font-bold text-neon-bright bg-neon-red/10 px-2 py-0.5 rounded border border-neon-red/30">8 DOMAINS ACTIVE</span>
         </div>
 
-        <div class="space-y-3.5 sm:space-y-4" id="skillBarsList"></div>
+        <div class="space-y-3.5 sm:space-y-4" id="skillBarsList">
+          <!-- Injected dynamically from portfolioData.skills -->
+        </div>
       </div>
 
       <!-- Right Column: Metrics & Cyber Tools Chips -->
@@ -442,7 +444,9 @@
         <!-- Cyber Tools Chip Set -->
         <div class="stealth-card rounded-2xl p-4 sm:p-5 flex-1">
           <span class="text-[11px] sm:text-xs font-bold text-white uppercase tracking-wider block mb-3 font-mono">SENJATA UTAMA (CYBER ARSENAL):</span>
-          <div class="flex flex-wrap gap-2" id="cyberToolsContainer"></div>
+          <div class="flex flex-wrap gap-2" id="cyberToolsContainer">
+            <!-- Injected dynamically from portfolioData.tools -->
+          </div>
         </div>
 
       </div>
@@ -451,7 +455,7 @@
   </section>
 
   <!-- MEJA DECK BADGES -->
-  <section id="deck-badges-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8 relative z-10">
+  <section id="deck-badges-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8 relative z-10 scroll-mt-20">
     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-5 sm:mb-6">
       <div class="flex items-center gap-2.5">
         <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
@@ -484,15 +488,13 @@
 
       <!-- Sockets Grid Container -->
       <div id="deckBadgesContainer">
-        <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/50 min-h-[140px] md:min-h-[160px] p-6 text-center w-full flex items-center justify-center">
-          <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
-        </div>
+        <!-- Rendered dynamically -->
       </div>
     </div>
   </section>
 
   <!-- SERTIFIKAT -->
-  <section id="certificates-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8 relative z-10">
+  <section id="certificates-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-6 sm:py-8 relative z-10 scroll-mt-20">
     <div class="stealth-card rounded-3xl p-5 sm:p-6 md:p-8 border border-neon-red/30 shadow-neon-glow/15">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 mb-5 sm:mb-6 border-b border-white/10">
         <div>
@@ -503,15 +505,15 @@
           <h3 class="text-lg sm:text-xl md:text-2xl font-extrabold text-white tracking-tight">Sertifikat & Lisensi Profesional</h3>
         </div>
 
-        <!-- Tab Buttons Switcher (Scroll Horisontal Rapi di Layar Sempit) -->
-        <div class="flex overflow-x-auto no-scrollbar p-1 sm:p-1.5 bg-black/80 rounded-2xl border border-white/10 w-full sm:w-fit gap-1">
-          <button onclick="switchCertTab('courses')" id="tab-courses" class="whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold bg-crimson-700 text-white shadow-neon-glow transition-all">
+        <!-- Tab Buttons Switcher -->
+        <div class="flex overflow-x-auto p-1 sm:p-1.5 bg-black/80 rounded-2xl border border-white/10 w-full sm:w-fit gap-1">
+          <button onclick="switchCertTab('courses')" id="tab-courses" class="whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold bg-crimson-700 text-white shadow-neon-glow transition-all">
             Kursus & Studi
           </button>
-          <button onclick="switchCertTab('competitions')" id="tab-competitions" class="whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors">
+          <button onclick="switchCertTab('competitions')" id="tab-competitions" class="whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors">
             Kompetisi
           </button>
-          <button onclick="switchCertTab('bugHunter')" id="tab-bugHunter" class="whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors">
+          <button onclick="switchCertTab('bugHunter')" id="tab-bugHunter" class="whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors">
             Bug Hunter
           </button>
         </div>
@@ -519,15 +521,13 @@
 
       <!-- Certificate Grid Container -->
       <div id="certTabContent" class="py-2">
-        <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 min-h-[180px] md:min-h-[220px] p-6 text-center w-full my-2 flex items-center justify-center">
-          <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
-        </div>
+        <!-- Rendered dynamically -->
       </div>
     </div>
   </section>
 
   <!-- Target & Roadmap Milestones -->
-  <section id="target-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-8 sm:py-12 relative z-10">
+  <section id="target-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-8 sm:py-12 relative z-10 scroll-mt-20">
     <div class="flex items-center gap-2.5 mb-6 sm:mb-7">
       <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
       <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Target & Roadmap Milestones</h2>
@@ -540,29 +540,25 @@
       </div>
 
       <div class="space-y-2.5" id="tacticalTodoListContainer">
-        <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 min-h-[120px] p-6 text-center w-full flex items-center justify-center">
-          <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
-        </div>
+        <!-- Injected dynamically -->
       </div>
     </div>
   </section>
 
   <!-- Achievement Wall -->
-  <section id="achievements-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-8 sm:py-10 relative z-10">
+  <section id="achievements-area" class="max-w-6xl mx-auto px-3 sm:px-4 py-8 sm:py-10 relative z-10 scroll-mt-20">
     <div class="flex items-center gap-2.5 mb-6 sm:mb-7">
       <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
       <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Achievement Wall</h2>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5 items-stretch" id="asymmetricAchievementsGrid">
-      <div class="col-span-1 lg:col-span-12 rounded-3xl border border-dashed border-neon-red/40 bg-black/40 min-h-[160px] md:min-h-[180px] p-6 text-center w-full flex items-center justify-center">
-        <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
-      </div>
+      <!-- Injected dynamically -->
     </div>
   </section>
 
-  <!-- Riwayat Pendidikan (Waterfall Tree Presisi Sumbu 20px) -->
-  <section id="education-area" class="max-w-4xl mx-auto px-3 sm:px-4 py-8 sm:py-12 relative z-10">
+  <!-- Riwayat Pendidikan (Waterfall Tree) -->
+  <section id="education-area" class="max-w-4xl mx-auto px-3 sm:px-4 py-8 sm:py-12 relative z-10 scroll-mt-20">
     <div class="flex items-center gap-2.5 mb-7 sm:mb-8">
       <span class="h-0.5 w-7 bg-neon-red shadow-neon-glow"></span>
       <h2 class="text-xl sm:text-2xl font-bold text-white uppercase tracking-wider">Riwayat Pendidikan</h2>
@@ -570,11 +566,12 @@
 
     <div class="relative space-y-6 sm:space-y-7" id="educationWaterfallTree">
       <div class="tree-stem-line" id="educationTreeStem"></div>
+      <!-- Injected dynamically -->
     </div>
   </section>
 
   <!-- Public Guestbook Section -->
-  <section id="guestbook-area" class="max-w-4xl mx-auto px-3 sm:px-4 py-8 sm:py-10 relative z-10">
+  <section id="guestbook-area" class="max-w-4xl mx-auto px-3 sm:px-4 py-8 sm:py-10 relative z-10 scroll-mt-20">
     <div class="stealth-card rounded-3xl p-5 sm:p-6 md:p-8 border border-neon-red/30">
       <div class="text-center mb-5 sm:mb-6">
         <span class="px-3 py-1 rounded-full bg-neon-red/10 border border-neon-bright/40 text-neon-bright text-[10px] sm:text-[11px] font-mono font-bold tracking-widest">
@@ -615,7 +612,9 @@
       <p class="text-[11px] sm:text-xs text-zinc-400 mb-6">Terbuka untuk kolaborasi riset CTF, security engineering, dan diskusi sistem.</p>
 
       <div class="marquee-wrapper w-full overflow-hidden py-3 mb-6 sm:mb-8">
-        <div class="marquee-track flex gap-3 sm:gap-3.5" id="socialMarqueeTrack"></div>
+        <div class="marquee-track flex gap-3 sm:gap-3.5" id="socialMarqueeTrack">
+          <!-- Duplicated items injected dynamically -->
+        </div>
       </div>
 
       <div class="text-[10px] sm:text-xs text-zinc-500 font-mono">
@@ -672,26 +671,19 @@
 
   <!-- 2. Core Execution Engine -->
   <script>
-    function initializeApp() {
+    /* -------------------------------------------------------------
+       FAIL-SAFE DYNAMIC RENDER PIPELINE
+       ------------------------------------------------------------- */
+    function renderAllComponents() {
       if (typeof portfolioData === 'undefined') return;
 
-      // 1. Hero Photo & Badges
+      // 1. Sinkronisasi Foto Profil
       const heroPhoto = document.getElementById('heroPhoto');
       if (heroPhoto && portfolioData.profilePhoto) {
         heroPhoto.src = portfolioData.profilePhoto;
       }
 
-      const heroMan = document.getElementById('heroLogoMan');
-      if (heroMan && portfolioData.heroBadges?.manLogo) {
-        heroMan.src = portfolioData.heroBadges.manLogo;
-      }
-
-      const heroIts = document.getElementById('heroLogoIts');
-      if (heroIts && portfolioData.heroBadges?.itsLogo) {
-        heroIts.src = portfolioData.heroBadges.itsLogo;
-      }
-
-      // 2. Metrics Counter
+      // 2. Flags & Duration
       const flagElem = document.getElementById('totalFlagsCounter');
       if (flagElem && typeof portfolioData.flags !== 'undefined') {
         flagElem.textContent = portfolioData.flags;
@@ -702,7 +694,7 @@
         durElem.textContent = portfolioData.explorationDuration;
       }
 
-      // 3. Render Komponen
+      // 3. Render Komponen Utama
       renderTools();
       renderSkillBars();
       renderDeckBadges();
@@ -714,11 +706,10 @@
       initGuestbookEngine();
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initializeApp);
-    } else {
-      initializeApp();
-    }
+    // Eksekusi fail-safe berlapis
+    renderAllComponents();
+    document.addEventListener('DOMContentLoaded', renderAllComponents);
+    window.addEventListener('load', renderAllComponents);
 
     /* Render Cyber Tools */
     function renderTools() {
@@ -728,13 +719,13 @@
 
       portfolioData.tools.forEach(tool => {
         const span = document.createElement('span');
-        span.className = "px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-black/70 border border-white/10 text-[11px] sm:text-xs font-medium text-zinc-200 hover:border-neon-bright hover:shadow-neon-glow transition-all flex items-center gap-1.5 cursor-default";
-        span.innerHTML = `<i class="bi ${tool.icon} ${tool.color}"></i> ${tool.name}`;
+        span.className = "px-3 py-1.5 rounded-lg bg-black/70 border border-white/10 text-xs font-medium text-zinc-200 hover:border-neon-bright hover:shadow-neon-glow transition-all flex items-center gap-1.5 cursor-default";
+        span.innerHTML = `<i class="bi ${tool.icon || 'bi-gear'} ${tool.color || 'text-neon-bright'}"></i> ${tool.name}`;
         container.appendChild(span);
       });
     }
 
-    /* Render 8 Domain Cyber Bars */
+    /* Render 8 Domain Cyber Bars (Langsung Tampil + Animasi Width) */
     function renderSkillBars() {
       const list = document.getElementById('skillBarsList');
       if (!list || typeof portfolioData === 'undefined' || !portfolioData.skills) return;
@@ -743,16 +734,18 @@
       portfolioData.skills.forEach(skill => {
         const row = document.createElement('div');
         row.className = "skill-item-row";
-        row.setAttribute('data-target', skill.val !== null ? skill.val : 0);
+        const hasVal = skill.val !== null && typeof skill.val !== 'undefined';
+        const valNum = hasVal ? skill.val : 0;
+        row.setAttribute('data-target', valNum);
 
-        if (skill.val !== null) {
+        if (hasVal) {
           row.innerHTML = `
             <div class="flex justify-between text-xs mb-1.5 font-medium">
               <span class="text-zinc-200">${skill.name}</span>
-              <span class="font-mono font-bold text-white tracking-wider skill-num-label">0%</span>
+              <span class="font-mono font-bold text-white tracking-wider skill-num-label">${valNum}%</span>
             </div>
             <div class="w-full h-2.5 rounded-full neon-bar-core overflow-hidden">
-              <div class="h-full neon-bar-fill rounded-full" data-width="${skill.val}%"></div>
+              <div class="h-full neon-bar-fill rounded-full" style="width: ${valNum}%;"></div>
             </div>
           `;
         } else {
@@ -770,11 +763,12 @@
       });
     }
 
-    /* Render Meja Deck Badges (Hanya Coming Soon Tanpa Deskripsi) */
+    /* Render Meja Deck Badges (Coming Soon Bersih) */
     function renderDeckBadges() {
       const container = document.getElementById('deckBadgesContainer');
       const countLabel = document.getElementById('badgeUnlockedStatusCount');
       if (!container) return;
+      container.innerHTML = '';
 
       const badges = (typeof portfolioData !== 'undefined' && portfolioData.badges) ? portfolioData.badges : [];
 
@@ -782,15 +776,14 @@
         if (countLabel) countLabel.textContent = "COMING SOON";
         container.className = "w-full";
         container.innerHTML = `
-          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/50 min-h-[140px] md:min-h-[160px] p-6 text-center w-full flex items-center justify-center">
-            <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
+          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/50 min-h-[140px] p-6 text-center w-full flex items-center justify-center">
+            <span class="text-xs sm:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
           </div>
         `;
         return;
       }
 
       container.className = "grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-3";
-      container.innerHTML = '';
       if (countLabel) countLabel.textContent = `${badges.length} MOUNTED`;
 
       badges.forEach(b => {
@@ -817,15 +810,15 @@
       });
     }
 
-    /* Render Sertifikat (Hanya Coming Soon Tanpa Deskripsi) */
+    /* Render Sertifikat (Coming Soon Bersih) */
     function switchCertTab(tab) {
       ['courses', 'competitions', 'bugHunter'].forEach(t => {
         const btn = document.getElementById(`tab-${t}`);
         if (btn) {
           if (t === tab) {
-            btn.className = "whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold bg-crimson-700 text-white shadow-neon-glow transition-all";
+            btn.className = "whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold bg-crimson-700 text-white shadow-neon-glow transition-all";
           } else {
-            btn.className = "whitespace-nowrap px-3.5 sm:px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors";
+            btn.className = "whitespace-nowrap px-4 py-2 rounded-xl text-xs font-semibold text-zinc-400 hover:text-white transition-colors";
           }
         }
       });
@@ -839,15 +832,15 @@
 
       if (certs.length === 0) {
         container.innerHTML = `
-          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 min-h-[180px] md:min-h-[220px] p-6 text-center w-full my-2 flex items-center justify-center">
-            <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
+          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 min-h-[160px] p-6 text-center w-full my-2 flex items-center justify-center">
+            <span class="text-xs sm:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
           </div>
         `;
       } else {
         container.innerHTML = `
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 my-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 my-2">
             ${certs.map(c => `
-              <div class="p-5 sm:p-6 rounded-2xl bg-black/60 border border-white/10 hover:border-neon-bright flex flex-col justify-between transition-all group shadow-lg">
+              <div class="p-6 rounded-2xl bg-black/60 border border-white/10 hover:border-neon-bright flex flex-col justify-between transition-all group shadow-lg">
                 <div>
                   <div class="flex items-center justify-between gap-3 mb-3">
                     <span class="px-2.5 py-1 rounded-md bg-neon-red/15 border border-neon-bright/40 text-[11px] font-mono text-neon-bright font-bold uppercase tracking-wider">
@@ -855,11 +848,9 @@
                     </span>
                     <span class="font-mono text-xs font-bold text-zinc-400">${c.year}</span>
                   </div>
-
-                  <h4 class="text-sm sm:text-base md:text-lg font-bold text-white group-hover:text-neon-bright transition-colors leading-snug mb-2">
+                  <h4 class="text-base md:text-lg font-bold text-white group-hover:text-neon-bright transition-colors leading-snug mb-2">
                     ${c.title}
                   </h4>
-
                   ${c.certId ? `
                     <div class="text-[11px] font-mono text-zinc-400 flex items-center gap-1.5 mb-4">
                       <i class="bi bi-shield-check text-neon-bright"></i>
@@ -867,11 +858,10 @@
                     </div>
                   ` : '<div class="mb-4"></div>'}
                 </div>
-
                 <div class="pt-4 border-t border-white/10 flex items-center justify-between">
-                  <span class="text-[10px] sm:text-[11px] font-mono text-zinc-500">TERVERIFIKASI RESMI</span>
+                  <span class="text-[11px] font-mono text-zinc-500">TERVERIFIKASI RESMI</span>
                   ${c.url ? `
-                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-lg bg-white/5 hover:bg-neon-bright hover:text-white border border-white/10 text-xs font-semibold text-zinc-200 transition-all flex items-center gap-1.5 shadow-sm">
+                    <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-lg bg-white/5 hover:bg-neon-bright hover:text-white border border-white/10 text-xs font-semibold text-zinc-200 transition-all flex items-center gap-1.5 shadow-sm">
                       <span>Lihat Kredensial</span>
                       <i class="bi bi-box-arrow-up-right text-[11px]"></i>
                     </a>
@@ -884,58 +874,58 @@
       }
     }
 
-    /* Render Achievement Wall (Hanya Coming Soon Tanpa Deskripsi) */
+    /* Render Achievement Wall */
     function renderAchievements() {
       const grid = document.getElementById('asymmetricAchievementsGrid');
       if (!grid) return;
+      grid.innerHTML = '';
 
       const list = (typeof portfolioData !== 'undefined' && portfolioData.achievements) ? portfolioData.achievements : [];
 
       if (list.length === 0) {
         grid.innerHTML = `
-          <div class="col-span-1 lg:col-span-12 rounded-3xl border border-dashed border-neon-red/40 bg-black/40 min-h-[160px] md:min-h-[180px] p-6 text-center w-full flex items-center justify-center">
-            <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
+          <div class="col-span-1 lg:col-span-12 rounded-3xl border border-dashed border-neon-red/40 bg-black/40 min-h-[160px] p-6 text-center w-full flex items-center justify-center">
+            <span class="text-xs sm:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
           </div>
         `;
         return;
       }
 
-      grid.innerHTML = '';
       list.forEach(ach => {
         const card = document.createElement('div');
 
         if (ach.featured) {
-          card.className = "lg:col-span-7 stealth-card rounded-3xl p-5 sm:p-6 md:p-7 border-l-4 border-l-neon-bright relative overflow-hidden flex flex-col justify-between shadow-neon-glow/20";
+          card.className = "lg:col-span-7 stealth-card rounded-3xl p-6 md:p-7 border-l-4 border-l-neon-bright relative overflow-hidden flex flex-col justify-between shadow-neon-glow/20";
           card.innerHTML = `
             <div class="absolute -right-8 -top-8 w-32 h-32 bg-neon-red/10 rounded-full blur-2xl pointer-events-none"></div>
             <div>
-              <div class="flex items-center justify-between mb-3 sm:mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-neon-bright/20 border border-neon-bright/40 text-neon-bright text-[10px] sm:text-[11px] font-mono font-bold">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-neon-bright/20 border border-neon-bright/40 text-neon-bright text-[11px] font-mono font-bold">
                   ${ach.badge}
                 </span>
-                <span class="text-[11px] sm:text-xs font-mono text-zinc-400 font-bold">${ach.category}</span>
+                <span class="text-xs font-mono text-zinc-400 font-bold">${ach.category}</span>
               </div>
-              <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-white tracking-tight mb-2">${ach.title}</h3>
+              <h3 class="text-xl md:text-2xl font-bold text-white tracking-tight mb-2">${ach.title}</h3>
               <p class="text-xs text-zinc-300 leading-relaxed max-w-lg mb-4">${ach.desc}</p>
             </div>
-            <div class="flex flex-wrap gap-2 pt-3 border-t border-white/10 text-[10px] sm:text-[11px] font-mono">
+            <div class="flex flex-wrap gap-2 pt-3 border-t border-white/10 text-[11px] font-mono">
               ${(ach.tags || []).map(t => `<span class="px-2.5 py-1 rounded bg-black/60 border border-neon-red/30 text-zinc-200">${t}</span>`).join('')}
             </div>
           `;
         } else {
-          card.className = "lg:col-span-5 stealth-card rounded-3xl p-5 sm:p-6 md:p-7 border-t-2 border-t-neon-bright flex flex-col justify-between hover:shadow-neon-glow transition-all";
+          card.className = "lg:col-span-5 stealth-card rounded-3xl p-6 md:p-7 border-t-2 border-t-neon-bright flex flex-col justify-between hover:shadow-neon-glow transition-all";
           card.innerHTML = `
             <div>
-              <div class="flex items-center justify-between mb-3 sm:mb-4">
-                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white text-[10px] sm:text-[11px] font-mono font-bold">
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-white text-[11px] font-mono font-bold">
                   ${ach.badge}
                 </span>
-                <span class="text-[11px] sm:text-xs font-mono text-neon-bright font-bold">${ach.category}</span>
+                <span class="text-xs font-mono text-neon-bright font-bold">${ach.category}</span>
               </div>
-              <h3 class="text-base sm:text-lg md:text-xl font-bold text-white tracking-tight mb-2">${ach.title}</h3>
+              <h3 class="text-lg md:text-xl font-bold text-white tracking-tight mb-2">${ach.title}</h3>
               <p class="text-xs text-zinc-300 leading-relaxed mb-4">${ach.desc}</p>
             </div>
-            <div class="pt-3 border-t border-white/10 text-[10px] sm:text-[11px] font-mono text-zinc-400">
+            <div class="pt-3 border-t border-white/10 text-[11px] font-mono text-zinc-400">
               ${ach.tags ? ach.tags.join(' // ') : ''}
             </div>
           `;
@@ -954,8 +944,8 @@
 
       if (list.length === 0) {
         const cs = document.createElement('div');
-        cs.className = "rounded-2xl border border-dashed border-neon-red/40 bg-black/40 p-6 text-center w-full flex items-center justify-center";
-        cs.innerHTML = '<span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>';
+        cs.className = "rounded-2xl border border-dashed border-neon-red/40 bg-black/40 p-6 text-center w-full flex items-center justify-center min-h-[120px]";
+        cs.innerHTML = '<span class="text-xs sm:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>';
         container.appendChild(cs);
         return;
       }
@@ -964,16 +954,15 @@
         const item = document.createElement('div');
         item.className = "relative flex items-center group";
 
-        // Dot bulat diposisikan tepat di koordinat 20px dan vertikal 50% di tengah kartu
         const dot = document.createElement('div');
         dot.className = "absolute left-[20px] top-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-neon-bright border-2 border-white shadow-neon-tube shrink-0 z-10";
 
         const card = document.createElement('div');
-        card.className = "stealth-card ml-11 sm:ml-12 flex-1 rounded-2xl p-3.5 sm:p-5 flex items-center gap-3.5 sm:gap-4 hover:border-neon-bright/60 transition-all";
+        card.className = "stealth-card ml-11 sm:ml-12 flex-1 rounded-2xl p-4 md:p-5 flex items-center gap-4 hover:border-neon-bright/60 transition-all";
 
         const logoBox = document.createElement('div');
-        logoBox.className = "w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-2xl bg-zinc-950/90 border border-white/10 group-hover:border-neon-bright/60 flex items-center justify-center p-2 sm:p-2.5 shrink-0 overflow-hidden relative shadow-inner shadow-black transition-all";
-        
+        logoBox.className = "w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-zinc-950/90 border border-white/10 group-hover:border-neon-bright/60 flex items-center justify-center p-2.5 shrink-0 overflow-hidden relative shadow-inner shadow-black transition-all";
+
         const img = document.createElement('img');
         img.src = edu.logo || '';
         img.alt = edu.name || 'Institusi';
@@ -995,21 +984,21 @@
         info.className = "flex-1 min-w-0";
 
         const topRow = document.createElement('div');
-        topRow.className = "flex flex-col sm:flex-row sm:items-center justify-between gap-0.5 sm:gap-2";
+        topRow.className = "flex flex-col sm:flex-row sm:items-center justify-between gap-1 sm:gap-2";
 
         const name = document.createElement('h3');
-        name.className = "text-xs sm:text-sm md:text-base font-bold text-white truncate";
+        name.className = "text-sm md:text-base font-bold text-white truncate";
         name.textContent = edu.name || '';
 
         const period = document.createElement('span');
-        period.className = "text-[10px] sm:text-[11px] font-mono text-neon-bright font-bold shrink-0";
+        period.className = "text-[11px] font-mono text-neon-bright font-bold shrink-0";
         period.textContent = edu.period || '';
 
         topRow.appendChild(name);
         topRow.appendChild(period);
 
         const status = document.createElement('span');
-        status.className = "text-[11px] sm:text-xs text-zinc-400 block mt-0.5 sm:mt-1";
+        status.className = "text-xs text-zinc-400 block mt-1";
         status.textContent = edu.status || '';
 
         info.appendChild(topRow);
@@ -1034,7 +1023,7 @@
       if (list.length === 0) {
         container.innerHTML = `
           <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 min-h-[120px] p-6 text-center w-full flex items-center justify-center">
-            <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
+            <span class="text-xs sm:text-sm font-mono font-bold text-neon-bright uppercase tracking-[0.25em]">COMING SOON</span>
           </div>
         `;
         return;
@@ -1043,24 +1032,24 @@
       container.innerHTML = '';
       list.forEach((item) => {
         const row = document.createElement('div');
-        row.className = "flex items-center justify-between p-2.5 sm:p-3 rounded-xl bg-black/60 border border-white/[0.06] hover:border-neon-bright hover:shadow-neon-glow/20 transition-all group gap-2.5";
+        row.className = "flex items-center justify-between p-3 rounded-xl bg-black/60 border border-white/[0.06] hover:border-neon-bright hover:shadow-neon-glow/20 transition-all group gap-2.5";
 
         const left = document.createElement('div');
-        left.className = "flex items-center gap-3 min-w-0";
+        left.className = "flex items-center gap-3.5 min-w-0";
 
         const checkCircle = document.createElement('div');
         checkCircle.className = "w-5 h-5 rounded-md border border-neon-red/50 bg-neon-red/10 flex items-center justify-center text-neon-bright text-xs shadow-neon-tube shrink-0 group-hover:scale-110 transition-transform";
         checkCircle.innerHTML = '<i class="bi bi-check2"></i>';
 
         const titleText = document.createElement('span');
-        titleText.className = "text-xs sm:text-sm font-semibold text-zinc-200 group-hover:text-white transition-colors truncate";
+        titleText.className = "text-xs md:text-sm font-semibold text-zinc-200 group-hover:text-white transition-colors truncate";
         titleText.textContent = item.title;
 
         left.appendChild(checkCircle);
         left.appendChild(titleText);
 
         const badge = document.createElement('span');
-        badge.className = "text-[9px] sm:text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black/80 border border-white/10 text-zinc-400 group-hover:border-neon-bright/50 group-hover:text-neon-bright transition-colors shrink-0";
+        badge.className = "text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-black/80 border border-white/10 text-zinc-400 group-hover:border-neon-bright/50 group-hover:text-neon-bright transition-colors shrink-0";
         badge.textContent = `${item.tag} // ${item.status}`;
 
         row.appendChild(left);
@@ -1069,15 +1058,17 @@
       });
     }
 
-    /* Render Medsos Infinite Marquee (Auto-Fill Buffer + 2x Duplicate Tanpa Celah) */
+    /* Render Medsos Infinite Marquee (Loop Mulus) */
     function renderSocialMarquee() {
       const track = document.getElementById('socialMarqueeTrack');
-      if (!track || typeof portfolioData === 'undefined' || !portfolioData.socials || portfolioData.socials.length === 0) return;
+      if (!track) return;
+      const socials = (typeof portfolioData !== 'undefined' && portfolioData.socials) ? portfolioData.socials : [];
+      if (socials.length === 0) return;
       track.innerHTML = '';
 
-      let baseList = [...portfolioData.socials];
-      while (baseList.length < 8) {
-        baseList = baseList.concat(portfolioData.socials);
+      let baseList = [...socials];
+      while (baseList.length < 6) {
+        baseList = baseList.concat(socials);
       }
       const fullList = [...baseList, ...baseList];
 
@@ -1086,13 +1077,13 @@
         a.href = item.url;
         a.target = "_blank";
         a.rel = "noopener noreferrer";
-        a.className = "stealth-card px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-xl flex items-center gap-2 hover:border-neon-bright hover:shadow-neon-glow text-xs text-zinc-300 hover:text-white transition-all shrink-0";
+        a.className = "stealth-card px-4 py-2.5 rounded-xl flex items-center gap-2.5 hover:border-neon-bright hover:shadow-neon-glow text-xs text-zinc-300 hover:text-white transition-all shrink-0";
         a.innerHTML = `<i class="bi ${item.icon} text-neon-bright text-sm"></i><span class="font-semibold">${item.platform}</span>`;
         track.appendChild(a);
       });
     }
 
-    /* Falling Meteors Canvas Engine (DPI Scaled & Anti-Flicker) */
+    /* Falling Meteors Canvas Engine (Anti-Flicker & Safe Alpha) */
     (() => {
       const canvas = document.getElementById('meteor-canvas');
       if (!canvas) return;
@@ -1102,11 +1093,8 @@
       let curW = 0, curH = 0;
 
       function resize() {
-        const w = window.innerWidth;
-        const h = window.innerHeight;
-        
-        curW = w;
-        curH = h;
+        curW = window.innerWidth;
+        curH = window.innerHeight;
         dpr = window.devicePixelRatio || 1;
 
         canvas.width = curW * dpr;
@@ -1197,33 +1185,33 @@
       requestAnimationFrame(loop);
     })();
 
-    /* PicoCTF Constellation Canvas (Pola Asli CTF & Clamped Boundary Tooltip) */
+    /* PicoCTF Constellation Canvas (Pola Asimetris Topologi CTF Asli) */
     (() => {
       const canvas = document.getElementById('orbital-constellation-canvas');
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
 
-      const sourceSkills = (typeof portfolioData !== 'undefined' && portfolioData.skills && portfolioData.skills.length > 0)
-        ? portfolioData.skills
-        : [
-          { name: "General Skills", val: 40 },
-          { name: "Cryptography", val: 20 },
-          { name: "Web Exploitation", val: null },
-          { name: "Forensics", val: 60 },
-          { name: "Binary Exploitation", val: null },
-          { name: "Reverse Engineering", val: 70 },
-          { name: "Network Knowledge", val: 75 },
-          { name: "OSINT", val: 15 }
-        ];
+      const defaultSkills = [
+        { name: "GENERAL SKILLS", val: "40%", angle: -Math.PI / 2, rFactor: 0.44 },
+        { name: "CRYPTOGRAPHY", val: "20%", angle: -Math.PI / 4, rFactor: 0.46 },
+        { name: "WEB EXPLOITATION", val: "[RESEARCH]", angle: 0, rFactor: 0.45 },
+        { name: "FORENSICS", val: "60%", angle: Math.PI / 4, rFactor: 0.47 },
+        { name: "BINARY EXPLOITATION", val: "[RESEARCH]", angle: Math.PI / 2, rFactor: 0.44 },
+        { name: "REVERSE ENGINEERING", val: "70%", angle: (3 * Math.PI) / 4, rFactor: 0.46 },
+        { name: "NETWORK KNOWLEDGE", val: "75%", angle: Math.PI, rFactor: 0.45 },
+        { name: "OSINT", val: "15%", angle: (-3 * Math.PI) / 4, rFactor: 0.47 }
+      ];
 
-      const domains = sourceSkills.map((s, idx, arr) => ({
-        name: (s.name || '').toUpperCase(),
-        val: (s.val !== null && typeof s.val !== 'undefined') ? `${s.val}%` : "[RESEARCH]",
-        angle: (typeof s.angle === 'number') ? s.angle : (-Math.PI / 2 + (idx * (2 * Math.PI / arr.length))),
-        rFactor: (typeof s.rFactor === 'number') ? s.rFactor : 0.45
-      }));
+      const domains = (typeof portfolioData !== 'undefined' && portfolioData.skills && portfolioData.skills.length === 8) 
+        ? portfolioData.skills.map((s, idx) => ({
+            name: s.name.toUpperCase(),
+            val: s.val !== null ? `${s.val}%` : "[RESEARCH]",
+            angle: (typeof s.angle === 'number') ? s.angle : defaultSkills[idx].angle,
+            rFactor: s.rFactor || defaultSkills[idx].rFactor
+          }))
+        : defaultSkills;
 
-      // Pola Topologi Jaringan CTF Asimetris Asli
+      // Jaringan topologi CTF asimetris asli
       const connections = [
         [0, 4], [1, 5], [2, 6], [7, 3],
         [0, 3], [0, 5], [7, 1], [6, 4],
@@ -1243,11 +1231,8 @@
 
       function resize() {
         if (!canvas.parentElement) return;
-        const w = canvas.parentElement.clientWidth || 360;
-        const h = canvas.parentElement.clientHeight || 460;
-
-        width = w;
-        height = h;
+        width = canvas.parentElement.clientWidth || 360;
+        height = canvas.parentElement.clientHeight || 460;
         dpr = window.devicePixelRatio || 1;
 
         canvas.width = width * dpr;
@@ -1265,7 +1250,6 @@
       const tooltipTitle = document.getElementById('tooltipDomainTitle');
       const tooltipVal = document.getElementById('tooltipDomainVal');
 
-      // Mouse Listener Desktop
       canvas.addEventListener('mousemove', (e) => {
         const rect = canvas.getBoundingClientRect();
         mouse.x = e.clientX - rect.left;
@@ -1278,7 +1262,6 @@
         if (tooltip) tooltip.style.opacity = '0';
       });
 
-      // Touch Listener Smartphone & Tablet (Deteksi Tap Murni vs Scroll)
       canvas.addEventListener('touchstart', (e) => {
         if (e.touches && e.touches[0]) {
           touchStartX = e.touches[0].clientX;
@@ -1291,7 +1274,7 @@
           const deltaX = Math.abs(e.changedTouches[0].clientX - touchStartX);
           const deltaY = Math.abs(e.changedTouches[0].clientY - touchStartY);
 
-          // Jika pergeseran jari > 10px, anggap sebagai scroll gesture (jangan munculkan tooltip)
+          // Jika pergeseran jari > 10px, anggap sebagai scroll gesture murni
           if (deltaX > 10 || deltaY > 10) return;
 
           const rect = canvas.getBoundingClientRect();
@@ -1430,7 +1413,7 @@
 
           tooltip.style.left = `${tipX}px`;
           tooltip.style.top = `${tipY}px`;
-        } else if (tooltip) {
+        } else if (tooltip && mouse.x === -1000) {
           tooltip.style.opacity = '0';
         }
 
@@ -1492,53 +1475,6 @@
           }
         });
       }
-    })();
-
-    /* Scroll-Triggered Progress Bar */
-    (() => {
-      const card = document.getElementById('skillsContainerCard');
-      if (!card) return;
-
-      let triggered = false;
-
-      function triggerSkillBars() {
-        if (triggered) return;
-        triggered = true;
-
-        const rows = document.querySelectorAll('.skill-item-row');
-        rows.forEach((row) => {
-          const target = parseInt(row.getAttribute('data-target'), 10);
-          const bar = row.querySelector('.neon-bar-fill');
-          const numLabel = row.querySelector('.skill-num-label');
-
-          if (bar && row.dataset.target !== "0") {
-            bar.style.width = bar.getAttribute('data-width');
-          }
-
-          if (numLabel && target > 0) {
-            let current = 0;
-            const stepTime = Math.max(10, 1400 / target);
-            const counter = setInterval(() => {
-              current++;
-              numLabel.textContent = `${current}%`;
-              if (current >= target) {
-                clearInterval(counter);
-                numLabel.textContent = `${target}%`;
-              }
-            }, stepTime);
-          }
-        });
-      }
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            triggerSkillBars();
-          }
-        });
-      }, { threshold: 0.2 });
-
-      observer.observe(card);
     })();
 
     /* =========================================================================
@@ -1715,7 +1651,6 @@
         });
       }
 
-      // Listener Firestore: Bebas dari data hantu lokal
       if (db) {
         db.collection("guestbook")
           .orderBy("timestamp", "desc")
@@ -1742,7 +1677,6 @@
         renderLocalGuestbook();
       }
 
-      // Submit Absen Form
       if (guestForm) {
         guestForm.addEventListener('submit', async (e) => {
           e.preventDefault();
