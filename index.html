@@ -282,7 +282,7 @@
           <div class="flex items-center justify-center md:justify-start gap-2.5 mt-2">
             <span class="text-neon-bright font-bold text-lg tracking-wide">Natcat</span>
             <span class="text-zinc-600 font-mono text-sm">/</span>
-            <span class="text-xs text-zinc-300 font-medium">Cybersecurity Enthusiast</span>
+            <span class="text-xs text-zinc-300 font-medium">Praktisi Keamanan Siber & Sistem</span>
           </div>
         </div>
       </div>
@@ -497,7 +497,7 @@
           <span class="text-xs font-mono font-bold text-white tracking-widest uppercase">CREDLY BADGE SOCKETS // COMPACT TRAY</span>
         </div>
         <div class="text-[10px] font-mono text-zinc-400">
-          STATUS: <span class="text-neon-bright font-bold" id="badgeUnlockedStatusCount">0 MOUNTED</span>
+          STATUS: <span class="text-neon-bright font-bold" id="badgeUnlockedStatusCount">COMING SOON</span>
         </div>
       </div>
 
@@ -638,7 +638,7 @@
     </div>
   </footer>
 
-  <!-- TACTICAL ADMIN AUTH MODAL (DITEMPATKAN SEBELUM SCRIPT AGAR ELEMENT SELALU SIAP) -->
+  <!-- TACTICAL ADMIN AUTH MODAL (DITEMPATKAN SEBELUM SCRIPT) -->
   <div id="adminDeleteModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-[9999] hidden items-center justify-center p-4">
     <div class="stealth-card max-w-sm w-full rounded-2xl p-6 border border-neon-red/60 shadow-neon-sharp relative">
       <div class="text-center mb-4">
@@ -775,7 +775,7 @@
       });
     }
 
-    /* Render Meja Deck Badges (Ukuran Kompak Credly) */
+    /* Render Meja Deck Badges (Hanya Coming Soon Tanpa Deskripsi) */
     function renderDeckBadges() {
       const container = document.getElementById('deckBadgesContainer');
       const countLabel = document.getElementById('badgeUnlockedStatusCount');
@@ -785,15 +785,11 @@
       const badges = (typeof portfolioData !== 'undefined' && portfolioData.badges) ? portfolioData.badges : [];
 
       if (badges.length === 0) {
-        if (countLabel) countLabel.textContent = "0 MOUNTED // STANDBY";
+        if (countLabel) countLabel.textContent = "COMING SOON";
         container.className = "w-full";
         container.innerHTML = `
-          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/50 p-6 md:p-8 text-center w-full">
-            <div class="w-12 h-12 rounded-xl bg-neon-red/10 border border-neon-bright/30 flex items-center justify-center text-neon-bright text-xl mx-auto mb-3 shadow-neon-tube">
-              <i class="bi bi-patch-check"></i>
-            </div>
-            <span class="text-xs font-mono font-bold text-neon-bright uppercase tracking-widest block mb-1">STATUS: COMING SOON</span>
-            <p class="text-xs text-zinc-400 max-w-md mx-auto"></p>
+          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/50 p-6 md:p-8 text-center w-full flex items-center justify-center">
+            <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-widest">COMING SOON</span>
           </div>
         `;
         return;
@@ -826,7 +822,7 @@
       });
     }
 
-    /* Render Sertifikat (Ukuran Besar & Lega - 2 Kolom) */
+    /* Render Sertifikat (Hanya Coming Soon Tanpa Deskripsi) */
     function switchCertTab(tab) {
       ['courses', 'competitions', 'bugHunter'].forEach(t => {
         const btn = document.getElementById(`tab-${t}`);
@@ -846,12 +842,8 @@
 
       if (certs.length === 0) {
         container.innerHTML = `
-          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 p-8 md:p-12 text-center w-full my-2">
-            <div class="w-14 h-14 rounded-2xl bg-neon-red/10 border border-neon-bright/30 flex items-center justify-center text-neon-bright text-2xl mx-auto mb-3 shadow-neon-tube">
-              <i class="bi bi-file-earmark-medical"></i>
-            </div>
-            <span class="text-xs font-mono font-bold text-neon-bright uppercase tracking-widest block mb-1.5">STATUS: COMING SOON</span>
-            <p class="text-xs text-zinc-400 max-w-lg mx-auto"></p>
+          <div class="rounded-2xl border border-dashed border-neon-red/40 bg-black/40 p-8 md:p-10 text-center w-full my-2 flex items-center justify-center">
+            <span class="text-xs md:text-sm font-mono font-bold text-neon-bright uppercase tracking-widest">COMING SOON</span>
           </div>
         `;
       } else {
@@ -1201,7 +1193,7 @@
       renderConstellation();
     })();
 
-    /* Terminal Typewriter Loop (DIPERBAIKI LOGIKA INCREMENT/DECREMENT NYA) */
+    /* Terminal Typewriter Loop */
     (() => {
       const typeElem = document.getElementById('terminalTypewriter');
       if (!typeElem) return;
@@ -1418,7 +1410,7 @@
     /* Infinite Social Marquee Track */
     (() => {
       const track = document.getElementById('socialMarqueeTrack');
-      if (!track || typeof portfolioData === 'undefined' || !portfolioData.socials) return;
+      if (!track || typeof portfolioData !== 'undefined' && !portfolioData.socials) return;
 
       const fullList = [...portfolioData.socials, ...portfolioData.socials];
 
@@ -1443,13 +1435,12 @@
     })();
 
     /* =========================================================================
-       GUESTBOOK ENGINE DENGAN TACTICAL MODAL DELETE (DIPERBAIKI 100% AMAN & STABIL)
+       GUESTBOOK ENGINE DENGAN TACTICAL MODAL DELETE
        ========================================================================= */
     let db = null;
     let targetDocToDelete = null;
 
     function initGuestbookEngine() {
-      // Inisialisasi Firebase App & Firestore
       if (typeof firebase !== 'undefined' && portfolioData.firebaseConfig && portfolioData.firebaseConfig.projectId) {
         try {
           if (!firebase.apps.length) {
@@ -1466,7 +1457,6 @@
       const guestForm = document.getElementById('guestbookForm');
       const guestInput = document.getElementById('guestNameInput');
 
-      // Bind Modal Button Listeners
       const modalCancelBtn = document.getElementById('modalCancelBtn');
       const modalConfirmBtn = document.getElementById('modalConfirmDeleteBtn');
       const modalInput = document.getElementById('adminPasskeyModalInput');
@@ -1543,7 +1533,6 @@
               const row = document.createElement('div');
               row.className = "px-3.5 py-2.5 rounded-xl bg-black/60 border border-white/5 flex items-center justify-between text-xs hover:border-neon-bright/30 transition-all group";
 
-              // Sisi Kiri
               const left = document.createElement('div');
               left.className = "flex items-center gap-2";
 
@@ -1557,7 +1546,6 @@
               left.appendChild(dot);
               left.appendChild(name);
 
-              // Sisi Kanan
               const right = document.createElement('div');
               right.className = "flex items-center gap-2.5";
 
@@ -1565,7 +1553,6 @@
               time.className = "font-mono text-[10px] text-zinc-500";
               time.textContent = data.time || "Baru saja";
 
-              // Tombol Delete
               const delBtn = document.createElement('button');
               delBtn.type = "button";
               delBtn.className = "text-zinc-500 hover:text-neon-bright hover:bg-neon-red/10 rounded-lg p-1.5 transition-all cursor-pointer flex items-center justify-center opacity-60 group-hover:opacity-100";
@@ -1649,7 +1636,7 @@
 
     /* DevTools Console Easter Egg */
     console.log(
-      "%c[!] SYSTEM ACCESS GRANTED %c\nLooking for flags? You found the developer console.\nnatCTF{n4tc4t_c0ns0l3_1nsp3ct_m4st3r_2026}",
+      "%c[!] SYSTEM ACCESS GRANTED %c\nLooking for flags? You found the developer console.\nFLAG{n4tc4t_c0ns0l3_1nsp3ct_m4st3r_2026}",
       "color: #ff003c; font-size: 16px; font-weight: bold;",
       "color: #94a3b8; font-size: 12px;"
     );
